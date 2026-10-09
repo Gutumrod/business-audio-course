@@ -1,0 +1,4 @@
+file 'D:/AI-Workspace/learning/AGY-Business-Self-Study/audio-course/audio/ch01_part1.wav'
+file 'D:/AI-Workspace/learning/AGY-Business-Self-Study/audio-course/audio/ch01_part2.wav'
+file 'D:/AI-Workspace/learning/AGY-Business-Self-Study/audio-course/audio/ch01_part3.wav'
+file 'D:/AI-Workspace/learning/AGY-Business-Self-Study/audio-course/audio/ch01_part4.wav'

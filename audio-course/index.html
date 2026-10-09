@@ -766,10 +766,9 @@
         <span id="durationText" class="time-text total">--:--</span>
       </div>
 
-      <!-- Native Audio Element (Hidden) -->
-      <audio id="audioElement" preload="metadata">
+      <!-- Native Audio Element -->
+      <audio id="audioElement" preload="auto" playsinline webkit-playsinline src="audio/ch01_full.mp3">
         <source src="audio/ch01_full.mp3" type="audio/mpeg">
-        <source src="audio/ch01_full.wav" type="audio/wav">
         เบราว์เซอร์ไม่รองรับตัวเล่นเสียง
       </audio>
     </section>
@@ -1051,6 +1050,7 @@
 
     const speeds = [1.0, 1.25, 1.5, 2.0];
     let currentSpeedIndex = 0;
+    let isTimeRestored = false;
 
     function formatTime(seconds) {
       if (isNaN(seconds) || seconds < 0) return '0:00';
@@ -1059,14 +1059,46 @@
       return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
-    // Toggle Play/Pause
-    function togglePlay() {
-      if (audio.paused) {
-        audio.play();
-        playBtn.textContent = '⏸';
-      } else {
-        audio.pause();
-        playBtn.textContent = '▶';
+    // Explicit state syncing from native events
+    audio.addEventListener('play', () => {
+      playBtn.textContent = '⏸';
+    });
+    audio.addEventListener('pause', () => {
+      playBtn.textContent = '▶';
+    });
+    audio.addEventListener('error', () => {
+      console.warn("Audio error occurred, retrying with direct load...");
+      audio.load();
+    });
+
+    // Toggle Play/Pause - mobile safe
+    async function togglePlay() {
+      try {
+        if (audio.paused) {
+          if (!audio.src || !audio.src.includes('ch01_full.mp3')) {
+            audio.src = 'audio/ch01_full.mp3';
+            audio.load();
+          }
+          await audio.play();
+
+          // Restore saved position safely AFTER play starts
+          if (!isTimeRestored) {
+            const savedTime = localStorage.getItem('agy_ch01_audio_time');
+            if (savedTime && parseFloat(savedTime) > 0 && parseFloat(savedTime) < (audio.duration || 214) - 5) {
+              audio.currentTime = parseFloat(savedTime);
+            }
+            isTimeRestored = true;
+          }
+        } else {
+          audio.pause();
+        }
+      } catch (err) {
+        console.error("Audio playback error:", err);
+        // Fallback for strict mobile policies: direct load then play
+        audio.load();
+        audio.play().catch(e => {
+          console.error("Second play attempt failed:", e);
+        });
       }
     }
 
@@ -1077,7 +1109,7 @@
     });
 
     seekForwardBtn.addEventListener('click', () => {
-      audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10);
+      audio.currentTime = Math.min(audio.duration || 214, audio.currentTime + 10);
     });
 
     speedBtn.addEventListener('click', () => {
@@ -1088,7 +1120,7 @@
     });
 
     function initAudioMetadata() {
-      if (audio.duration && !isNaN(audio.duration) && audio.duration > 0) {
+      if (audio.duration && !isNaN(audio.duration) && isFinite(audio.duration) && audio.duration > 0) {
         durationText.textContent = formatTime(audio.duration);
         scrubber.max = audio.duration;
       } else {
@@ -1102,17 +1134,7 @@
     scrubber.max = 214;
 
     ['loadedmetadata', 'durationchange', 'canplay', 'loadeddata'].forEach(evt => {
-      audio.addEventListener(evt, () => {
-        initAudioMetadata();
-        
-        // Restore previous time
-        const savedTime = localStorage.getItem('agy_ch01_audio_time');
-        if (savedTime && parseFloat(savedTime) < (audio.duration || 214) - 2) {
-          audio.currentTime = parseFloat(savedTime);
-          scrubber.value = audio.currentTime;
-          currentTimeText.textContent = formatTime(audio.currentTime);
-        }
-      });
+      audio.addEventListener(evt, initAudioMetadata);
     });
 
     if (audio.readyState >= 1) {
