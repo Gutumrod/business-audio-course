@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ทดสอบเสียงบรรยาย Gemini TTS | บทที่ 1 (Sadaltager)</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-warm: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 620px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 22px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .audio-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .meta span strong {
+      color: var(--accent-warm);
+    }
+    audio {
+      width: 100%;
+      height: 44px;
+      border-radius: 8px;
+      outline: none;
+    }
+    .script-box {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--accent-warm);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .script-box h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-warm);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">🎙️ Gemini 3.1 Flash TTS · Audio Sample</div>
+    <h1>บทที่ 1: ธุรกิจคืออะไร และผู้บริหารทำอะไร</h1>
+    <p class="desc">ตัวอย่างการพากย์เสียงสไตล์ <strong>Business Mentor / Advisor</strong> (ความยาว 44 วินาที)</p>
+
+    <div class="audio-box">
+      <div class="meta">
+        <span>เสียง: <strong>Sadaltager (Knowledgeable)</strong></span>
+        <span>ความยาว: <strong>43.88 วินาที</strong></span>
+      </div>
+      <audio controls autoplay>
+        <source src="audio/sample_ch01_intro.mp3" type="audio/mpeg">
+        <source src="audio/sample_ch01_intro.wav" type="audio/wav">
+        เบราว์เซอร์ไม่รองรับตัวเล่นเสียง
+      </audio>
+    </div>
+
+    <div class="script-box">
+      <h3>บทที่อ่านในคลิปเสียงนี้:</h3>
+      <p>
+        "บทที่หนึ่ง ธุรกิจคืออะไร และผู้บริหารทำอะไร เป้าหมายของบทนี้ คือการเข้าใจความต่างระหว่างรายได้ ต้นทุน กำไร และบทบาทของผู้บริหาร ข้อหนึ่งจุดหนึ่ง ธุรกิจเริ่มจากปัญหาที่คนยอมจ่าย ธุรกิจไม่ใช่แค่การมีเพจขายของ หรือการจดทะเบียนบริษัท แต่เป็นระบบที่ใช้ทรัพยากรสร้างสินค้าและบริการที่ลูกค้าต้องการ ลูกค้าจ่ายเงินเพื่อผลลัพธ์ เช่น ได้อุปกรณ์ที่ติดตั้งพอดี หรือจองคิวร้านได้สะดวก ธุรกิจต้องส่งมอบผลลัพธ์นั้นได้อย่างต่อเนื่อง และต้องเหลือทรัพยากรพอให้อยู่รอดได้จริง"
+      </p>
+    </div>
+  </div>
+</body>
+</html>
