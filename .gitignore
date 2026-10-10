@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .env
+audio-course/audio/ch0[2-9]_full.mp3
+audio-course/audio/ch10_full.mp3
+audio-course/audio/concat_*.txt

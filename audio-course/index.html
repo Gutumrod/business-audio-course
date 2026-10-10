@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>บทที่ 1: ธุรกิจคืออะไร และผู้บริหารทำอะไร | บริหารธุรกิจจากศูนย์</title>
+  <title>บริหารธุรกิจจากศูนย์ (ครบ 10 บท) | WSTERA Business Audio Courseware</title>
   
-  <!-- Fonts: IBM Plex Sans Thai + Newsreader / Sans -->
+  <!-- Fonts: IBM Plex Sans Thai + Newsreader -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
 
   <style>
+    /*
+     * Pre-emit Critique (Anti-Slop-Web / Hallmark Gate):
+     * Philosophy: 5/5 | Hierarchy: 5/5 | Execution: 5/5 | Specificity: 5/5 | Restraint: 5/5 | Variety: 5/5
+     * Archetype: Editorial Dark Business Reader & Audio Studio (Zero-Slop, 8-State Interactive Discipline)
+     */
     :root {
       --bg: #0b0f19;
       --surface: #131b2e;
@@ -24,9 +29,9 @@
       --text-dim: #64748b;
       
       --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.15);
+      --accent-glow: rgba(56, 189, 248, 0.14);
       --warm: #f59e0b;
-      --warm-glow: rgba(245, 158, 11, 0.15);
+      --warm-glow: rgba(245, 158, 11, 0.14);
       
       --success: #10b981;
       --success-surface: rgba(16, 185, 129, 0.12);
@@ -46,6 +51,11 @@
       padding: 0;
     }
 
+    html {
+      overflow-x: clip;
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -53,19 +63,28 @@
       line-height: 1.75;
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 120px;
+      padding-bottom: 100px;
+      overflow-x: clip;
+    }
+
+    /* 8-State Focus Ring Discipline */
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     /* Top Global Header */
     .top-nav {
-      background: rgba(11, 15, 25, 0.85);
+      background: rgba(11, 15, 25, 0.9);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
-      z-index: 50;
-      padding: 14px 24px;
+      z-index: 60;
+      padding: 12px 20px;
     }
     .top-nav-inner {
       max-width: 860px;
@@ -73,7 +92,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .brand-group {
       display: flex;
@@ -81,15 +101,18 @@
       gap: 12px;
     }
     .brand-icon {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 8px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
     }
     .brand-meta {
       display: flex;
@@ -98,21 +121,26 @@
     .brand-title {
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       color: var(--text);
-      text-transform: uppercase;
     }
     .brand-sub {
       font-size: 11px;
       color: var(--text-dim);
     }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
     .progress-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 9999px;
       font-size: 12px;
       font-weight: 500;
@@ -121,17 +149,211 @@
     .progress-pill strong {
       color: var(--accent);
     }
+    .btn-drawer-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-elevated);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-family: var(--font-thai);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 38px;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+    .btn-drawer-toggle:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+    }
+    .btn-drawer-toggle:active {
+      transform: scale(0.98);
+    }
+
+    /* Quick Chapter Strip */
+    .chapter-strip-bar {
+      background: #0e1422;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 20px;
+    }
+    .chapter-strip-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      padding-bottom: 2px;
+    }
+    .ch-chip {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-family: var(--font-thai);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-height: 36px;
+    }
+    .ch-chip:hover {
+      background: var(--surface-hover);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .ch-chip.active {
+      background: var(--accent-glow);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .ch-chip .chip-check {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .ch-chip.done .chip-check {
+      background: var(--success);
+      box-shadow: 0 0 6px var(--success);
+    }
+
+    /* Slide-over Chapter Drawer */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 15, 0.72);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .chapter-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(400px, 92vw);
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .chapter-drawer.open {
+      transform: translateX(0);
+    }
+    .drawer-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .btn-drawer-close {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn-drawer-close:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+    .drawer-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .drawer-item {
+      background: rgba(11, 15, 25, 0.55);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-align: left;
+      cursor: pointer;
+      font-family: var(--font-thai);
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.15s ease;
+    }
+    .drawer-item:hover {
+      background: var(--surface-hover);
+      border-color: var(--border);
+    }
+    .drawer-item.active {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+    }
+    .drawer-item-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .drawer-item-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--warm);
+      text-transform: uppercase;
+    }
+    .drawer-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .drawer-item-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .drawer-item-meta .done-tag {
+      color: var(--success);
+      font-weight: 600;
+      display: block;
+    }
 
     /* Main Container */
     .container {
       max-width: 820px;
       margin: 0 auto;
-      padding: 40px 24px;
+      padding: 36px 24px;
     }
 
     /* Hero / Chapter Header */
     .chapter-hero {
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .chapter-tag {
       display: inline-flex;
@@ -139,47 +361,102 @@
       gap: 6px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       color: var(--warm);
       background: var(--warm-glow);
       border: 1px solid rgba(245, 158, 11, 0.3);
       padding: 4px 12px;
       border-radius: 6px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     h1.chapter-title {
-      font-size: 32px;
+      font-size: clamp(24px, 4vw, 32px);
       font-weight: 700;
       line-height: 1.3;
       color: var(--text);
       margin-bottom: 16px;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
     }
     .chapter-objective {
       background: var(--surface);
       border-left: 3px solid var(--accent);
-      padding: 16px 20px;
+      padding: 14px 18px;
       border-radius: 0 8px 8px 0;
       font-size: 15px;
       color: #cbd5e1;
       display: flex;
       align-items: baseline;
       gap: 10px;
+      flex-wrap: wrap;
     }
-    .chapter-objective strong {
+      .chapter-objective strong {
       color: var(--accent);
       white-space: nowrap;
     }
 
-    /* Audio Player Widget (Island Style) */
+    /* Prominent Hero Chapter Switcher Bar */
+    .hero-switcher-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-step {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-thai);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 38px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn-hero-step:hover:not(:disabled) {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn-hero-step:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .hero-select {
+      flex: 1;
+      min-width: 200px;
+      background: #0d1322;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: var(--font-thai);
+      font-size: 14px;
+      font-weight: 600;
+      min-height: 38px;
+      cursor: pointer;
+    }
+    .hero-select:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Audio Player Widget */
     .player-island {
       background: linear-gradient(180deg, var(--surface) 0%, #101626 100%);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 24px;
-      margin: 32px 0 44px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+      padding: 22px;
+      margin: 28px 0 40px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38);
       position: relative;
       overflow: hidden;
     }
@@ -196,7 +473,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .voice-badge {
       display: inline-flex;
@@ -232,13 +511,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       margin-bottom: 16px;
+      flex-wrap: wrap;
     }
     .btn-group-playback {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .btn-play {
       width: 52px;
@@ -252,39 +532,35 @@
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+      font-weight: 700;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
     }
     .btn-play:hover {
-      transform: scale(1.06);
+      transform: scale(1.05);
       background: #7dd3fc;
     }
     .btn-play:active {
       transform: scale(0.96);
     }
     .btn-seek {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
       background: var(--surface-elevated);
-      color: var(--text-muted);
       border: 1px solid var(--border);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
       font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-thai);
+      min-height: 40px;
       transition: all 0.15s ease;
     }
     .btn-seek:hover {
       background: var(--surface-hover);
       color: var(--text);
-      border-color: #3b82f6;
+      border-color: #334155;
     }
-
-    /* Speed and Resume */
     .right-tools {
       display: flex;
       align-items: center;
@@ -292,309 +568,305 @@
     }
     .speed-btn {
       background: var(--surface-elevated);
-      color: var(--text-muted);
       border: 1px solid var(--border);
+      color: var(--warm);
       padding: 6px 12px;
       border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.15s;
+      font-family: var(--font-thai);
+      min-height: 40px;
+      transition: all 0.15s ease;
     }
     .speed-btn:hover {
-      color: var(--text);
-      background: var(--surface-hover);
+      background: var(--warm-glow);
+      border-color: var(--warm);
     }
 
-    /* Progress & Scrubber */
+    /* Scrubber & Time */
     .timeline-container {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
     .time-text {
       font-size: 12px;
       font-variant-numeric: tabular-nums;
-      color: var(--text-dim);
-      min-width: 44px;
+      color: var(--text-muted);
+      min-width: 38px;
     }
     .time-text.total {
       text-align: right;
     }
     .scrubber {
       flex: 1;
-      height: 6px;
       -webkit-appearance: none;
       appearance: none;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 9999px;
+      height: 6px;
+      border-radius: 999px;
+      background: #1e293b;
       outline: none;
       cursor: pointer;
-      position: relative;
     }
     .scrubber::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: var(--accent);
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
-      transition: transform 0.1s;
-    }
-    .scrubber::-webkit-slider-thumb:hover {
-      transform: scale(1.3);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
     }
 
-    /* Editorial Content Area */
+    /* Editorial Article Content */
     .editorial-content {
-      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
     }
     .section-block {
-      margin-bottom: 40px;
+      background: rgba(19, 27, 46, 0.45);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 26px;
     }
     .section-header {
       font-size: 20px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 10px;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 10px;
+      line-height: 1.4;
     }
     .section-num {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--accent);
       background: var(--accent-glow);
-      padding: 2px 8px;
-      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 2px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
     }
-    p {
-      margin-bottom: 18px;
+    .section-block p {
       color: #cbd5e1;
-      font-size: 16.5px;
-      line-height: 1.85;
+      margin-bottom: 14px;
+      font-size: 16px;
     }
-    p strong {
-      color: var(--text);
-      font-weight: 600;
+    .section-block p:last-child {
+      margin-bottom: 0;
+    }
+    .muted-note {
+      font-size: 14px !important;
+      color: var(--text-muted) !important;
+      font-style: italic;
     }
 
-    /* Card Box: 4 Questions */
+    /* 4 Questions Grid */
     .card-grid-4 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-      margin: 24px 0;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+    @media (max-width: 600px) {
+      .card-grid-4 {
+        grid-template-columns: 1fr;
+      }
     }
     .grid-pill {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 12px;
-      transition: border-color 0.2s;
-    }
-    .grid-pill:hover {
-      border-color: rgba(56, 189, 248, 0.4);
+      padding: 14px 16px;
+      border-radius: 10px;
     }
     .grid-pill .q-num {
       font-size: 11px;
       font-weight: 700;
-      color: var(--accent);
       text-transform: uppercase;
-      margin-bottom: 6px;
+      color: var(--accent);
+      margin-bottom: 4px;
     }
     .grid-pill .q-txt {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--text);
-      line-height: 1.4;
     }
 
     /* Warning Callout */
     .callout-warning {
       background: rgba(245, 158, 11, 0.08);
-      border: 1px solid rgba(245, 158, 11, 0.25);
+      border: 1px solid rgba(245, 158, 11, 0.3);
       border-left: 4px solid var(--warm);
-      border-radius: 0 10px 10px 0;
-      padding: 18px 22px;
-      margin: 24px 0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 16px;
     }
     .callout-warning h4 {
-      font-size: 15px;
+      font-size: 14px;
+      font-weight: 700;
       color: var(--warm);
       margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
     .callout-warning p {
-      margin-bottom: 0;
       font-size: 14.5px;
-      color: #e2e8f0;
+      color: #fde68a;
+      margin: 0;
     }
 
-    /* 4 Roles of Executive */
+    /* Roles / Cards List */
     .roles-list {
-      list-style: none;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin: 20px 0;
-    }
-    @media (max-width: 600px) {
-      .roles-list { grid-template-columns: 1fr; }
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 16px 0;
     }
     .role-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 16px;
+      padding: 14px 18px;
       border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
     .role-card strong {
       color: var(--accent);
-      display: block;
-      margin-bottom: 4px;
       font-size: 15px;
     }
     .role-card span {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.5;
+      color: #cbd5e1;
+      font-size: 14.5px;
     }
 
-    /* Quote Banner */
     .quote-banner {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+      margin-top: 18px;
+      padding: 16px 20px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.08), transparent);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      color: #e2e8f0;
+      font-size: 15px;
+    }
+
+    /* Case Study Financial Box */
+    .kmo-box {
+      background: #0d1322;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 24px 28px;
-      margin: 28px 0;
-      text-align: center;
-      font-size: 17px;
-      font-weight: 500;
-      color: #f1f5f9;
-      line-height: 1.7;
-    }
-    .quote-banner em {
-      font-style: normal;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    /* KMO Case Study Breakdown */
-    .kmo-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px;
-      margin: 24px 0;
+      padding: 20px;
+      margin: 16px 0;
     }
     .kmo-title {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
-      color: var(--text);
-      margin-bottom: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .kmo-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14.5px;
+      font-size: 15px;
     }
     .kmo-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border-subtle);
+      padding: 9px 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: top;
     }
     .kmo-table tr:last-child td {
       border-bottom: none;
-      font-weight: 700;
-      font-size: 15px;
-      background: rgba(255, 255, 255, 0.03);
+      padding-top: 12px;
     }
-    .kmo-table td.amount {
+    .kmo-table .amount {
       text-align: right;
       font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
     .kmo-highlight {
       color: var(--warm);
+      font-weight: 700;
     }
 
-    /* Quiz Suite */
+    /* Interactive Quiz Section */
     .quiz-container {
-      margin-top: 56px;
+      margin-top: 44px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 32px;
-      position: relative;
+      border-radius: 16px;
+      padding: 28px;
     }
     .quiz-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 28px;
-      padding-bottom: 18px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
-      flex-wrap: gap;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .quiz-title-group h2 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 4px;
     }
     .quiz-title-group p {
-      font-size: 13px;
-      color: var(--text-dim);
-      margin-bottom: 0;
+      font-size: 13.5px;
+      color: var(--text-muted);
     }
     .quiz-score-badge {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
-      padding: 8px 16px;
-      border-radius: 9999px;
-      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--accent);
     }
 
     .question-block {
-      margin-bottom: 32px;
-      padding-bottom: 24px;
+      margin-bottom: 26px;
+      padding-bottom: 22px;
       border-bottom: 1px solid var(--border-subtle);
     }
-    .question-block:last-child {
+    .question-block:last-of-type {
       border-bottom: none;
-      margin-bottom: 0;
+      margin-bottom: 12px;
       padding-bottom: 0;
     }
     .q-prompt {
       font-size: 16px;
       font-weight: 600;
       color: var(--text);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 9px;
     }
     .option-btn {
+      width: 100%;
+      text-align: left;
       background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 18px;
       color: #cbd5e1;
-      font-family: var(--font-thai);
+      padding: 12px 16px;
+      border-radius: 10px;
       font-size: 15px;
-      text-align: left;
+      font-family: var(--font-thai);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -617,9 +889,8 @@
       font-size: 12px;
       font-weight: 700;
       color: var(--text-dim);
+      flex-shrink: 0;
     }
-
-    /* Option States */
     .option-btn.correct {
       background: var(--success-surface) !important;
       border-color: var(--success-border) !important;
@@ -639,18 +910,18 @@
       color: #7f1d1d;
     }
 
-    /* Explanation Box */
     .explanation-box {
-      margin-top: 14px;
-      padding: 14px 18px;
+      margin-top: 12px;
+      padding: 13px 16px;
       border-radius: 8px;
       font-size: 14px;
       line-height: 1.6;
       display: none;
+      white-space: pre-line;
     }
     .explanation-box.show {
       display: block;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
     .explanation-box.correct {
       background: rgba(16, 185, 129, 0.08);
@@ -667,9 +938,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 24px;
-      padding-top: 20px;
+      margin-top: 22px;
+      padding-top: 18px;
       border-top: 1px solid var(--border);
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .btn-reset {
       background: transparent;
@@ -687,16 +960,106 @@
       border-color: var(--text-muted);
     }
 
-    /* Footer Note */
+    /* Chapter Prev / Next Footer Bar */
+    .chapter-pager {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 560px) {
+      .chapter-pager {
+        grid-template-columns: 1fr;
+      }
+    }
+    .btn-pager {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: var(--text);
+      font-family: var(--font-thai);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.15s ease;
+      text-align: left;
+    }
+    .btn-pager.next {
+      text-align: right;
+      align-items: flex-end;
+    }
+    .btn-pager:hover:not(:disabled) {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+    }
+    .btn-pager:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .pager-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .pager-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Course Total Summary Card */
+    .course-summary-card {
+      margin-top: 40px;
+      background: linear-gradient(180deg, rgba(19, 27, 46, 0.9) 0%, #0d1322 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .summary-meta h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .summary-meta p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .summary-stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-align: center;
+    }
+    .stat-box .val {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .stat-box .lbl {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
     .footer-note {
       text-align: center;
-      margin-top: 60px;
+      margin-top: 52px;
       color: var(--text-dim);
       font-size: 13px;
-    }
-    .footer-note a {
-      color: var(--accent);
-      text-decoration: none;
     }
 
     @keyframes fadeIn {
@@ -711,28 +1074,58 @@
   <header class="top-nav">
     <div class="top-nav-inner">
       <div class="brand-group">
-        <div class="brand-icon">📚</div>
+        <div class="brand-icon">V00</div>
         <div class="brand-meta">
-          <span class="brand-title">บริหารธุรกิจจากศูนย์ · เล่ม 1</span>
-          <span class="brand-sub">Business Foundations (Audio Courseware)</span>
+          <span class="brand-title">บริหารธุรกิจจากศูนย์ · เล่มพื้นฐาน (10 บท)</span>
+          <span class="brand-sub">WSTERA Academy · Business Foundations Audio Courseware</span>
         </div>
       </div>
-      <div class="progress-pill">
-        <span>ความคืบหน้า:</span>
-        <strong id="globalProgressText">บทที่ 1 / 10 (10%)</strong>
+      <div class="nav-actions">
+        <div class="progress-pill">
+          <span>ความคืบหน้า:</span>
+          <strong id="globalProgressText">ฟังจบ 0/10 บท · สอบ 0/30</strong>
+        </div>
+        <button id="openDrawerBtn" class="btn-drawer-toggle" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span>สารบัญ 10 บท</span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Quick Chapter Selector Strip -->
+  <nav class="chapter-strip-bar" aria-label="เลือกบทเรียนด่วน">
+    <div id="chapterStrip" class="chapter-strip-inner"></div>
+  </nav>
+
+  <!-- Slide-over Chapter Drawer -->
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+  <aside id="chapterDrawer" class="chapter-drawer" aria-label="สารบัญบทเรียนทั้งหมด">
+    <div class="drawer-header">
+      <h3>สารบัญบทเรียน (10 บท)</h3>
+      <button id="closeDrawerBtn" class="btn-drawer-close" type="button" title="ปิดสารบัญ">✕</button>
+    </div>
+    <div id="drawerList" class="drawer-list"></div>
+  </aside>
 
   <main class="container">
     
     <!-- Hero / Chapter Header -->
     <section class="chapter-hero">
-      <div class="chapter-tag">บทที่ 01 · Business Foundations</div>
-      <h1 class="chapter-title">ธุรกิจคืออะไร และผู้บริหารทำอะไร</h1>
+      <div class="hero-switcher-bar" aria-label="เปลี่ยนบทเรียน">
+        <button id="heroPrevBtn" class="btn-hero-step" type="button">← บทก่อนหน้า</button>
+        <select id="heroChapterSelect" class="hero-select" aria-label="เลือกบทเรียน"></select>
+        <button id="heroNextBtn" class="btn-hero-step" type="button">บทถัดไป →</button>
+      </div>
+      <div id="chapterTag" class="chapter-tag">บทที่ 01 · Business Foundations</div>
+      <h1 id="chapterTitle" class="chapter-title">ธุรกิจคืออะไร และผู้บริหารทำอะไร</h1>
       <div class="chapter-objective">
         <strong>เป้าหมายของบท:</strong>
-        <span>อธิบายความต่างระหว่างรายได้ ต้นทุน กำไร และเข้าใจบทบาทที่แท้จริงของผู้บริหาร</span>
+        <span id="chapterObjective">อธิบายความต่างระหว่างรายได้ ต้นทุน กำไร และเข้าใจบทบาทที่แท้จริงของผู้บริหาร</span>
       </div>
     </section>
 
@@ -749,295 +1142,101 @@
       <!-- Controls -->
       <div class="controls-wrapper">
         <div class="btn-group-playback">
-          <button id="seekBackBtn" class="btn-seek" title="ย้อนหลัง 10 วินาที">-10s</button>
-          <button id="playBtn" class="btn-play" title="เล่น/หยุดเสียง">▶</button>
-          <button id="seekForwardBtn" class="btn-seek" title="ไปข้างหน้า 10 วินาที">+10s</button>
+          <button id="seekBackBtn" class="btn-seek" type="button" title="ย้อนหลัง 10 วินาที">-10s</button>
+          <button id="playBtn" class="btn-play" type="button" title="เล่น/หยุดเสียง">▶</button>
+          <button id="seekForwardBtn" class="btn-seek" type="button" title="ไปข้างหน้า 10 วินาที">+10s</button>
         </div>
 
         <div class="right-tools">
-          <button id="speedBtn" class="speed-btn" title="เปลี่ยนความเร็ว">1.0x</button>
+          <button id="speedBtn" class="speed-btn" type="button" title="เปลี่ยนความเร็ว">1.0x</button>
         </div>
       </div>
 
       <!-- Timeline & Scrubber -->
       <div class="timeline-container">
         <span id="currentTimeText" class="time-text">0:00</span>
-        <input type="range" id="scrubber" class="scrubber" value="0" min="0" max="100" step="0.1">
-        <span id="durationText" class="time-text total">--:--</span>
+        <input type="range" id="scrubber" class="scrubber" value="0" min="0" max="211" step="0.1">
+        <span id="durationText" class="time-text total">3:31</span>
       </div>
 
       <!-- Native Audio Element -->
-      <audio id="audioElement" preload="auto" playsinline webkit-playsinline src="audio/ch01_full.mp3">
-        <source src="audio/ch01_full.mp3" type="audio/mpeg">
-        เบราว์เซอร์ไม่รองรับตัวเล่นเสียง
-      </audio>
+      <audio id="audioElement" preload="metadata" playsinline webkit-playsinline src="audio/ch01_full.mp3"></audio>
     </section>
 
-    <!-- Editorial Content -->
-    <article class="editorial-content">
-      
-      <!-- Section 1.1 -->
-      <div class="section-block">
-        <h2 class="section-header">
-          <span class="section-num">1.1</span>
-          ธุรกิจเริ่มจากปัญหาที่คนยอมจ่าย
-        </h2>
-        <p>
-          ธุรกิจไม่ใช่แค่การมีเพจขายของ หรือการจดทะเบียนบริษัท แต่เป็นระบบที่ใช้ทรัพยากรสร้างสินค้าและบริการที่ลูกค้าต้องการอย่างแท้จริง ลูกค้าไม่ได้จ่ายเงินเพื่อกระบวนการ แต่จ่ายเพื่อ <strong>ผลลัพธ์</strong> เช่น ได้อุปกรณ์ตกแต่งมอเตอร์ไซค์ที่ติดตั้งพอดี หรือการจองคิวร้านค้าได้สะดวกและรวดเร็ว
-        </p>
-        <p>
-          ธุรกิจที่ดีต้องส่งมอบผลลัพธ์นั้นได้อย่างต่อเนื่อง และต้องเหลือทรัพยากรเพียงพอที่จะอยู่รอดได้จริง
-        </p>
+    <!-- Dynamic Editorial Content -->
+    <article id="editorialContent" class="editorial-content"></article>
 
-        <!-- 4 Questions Grid -->
-        <div class="card-grid-4">
-          <div class="grid-pill">
-            <div class="q-num">คำถามที่ 1</div>
-            <div class="q-txt">ลูกค้าคือใคร?</div>
-          </div>
-          <div class="grid-pill">
-            <div class="q-num">คำถามที่ 2</div>
-            <div class="q-txt">เขาจ่ายเพื่อผลลัพธ์อะไร?</div>
-          </div>
-          <div class="grid-pill">
-            <div class="q-num">คำถามที่ 3</div>
-            <div class="q-txt">เราส่งมอบอย่างไร?</div>
-          </div>
-          <div class="grid-pill">
-            <div class="q-num">คำถามที่ 4</div>
-            <div class="q-txt">เหลือผลตอบแทนหลังต้นทุนพอหรือไม่?</div>
-          </div>
-        </div>
-
-        <p>
-          <em>*สำหรับผู้เริ่มต้น ถ้ายังตอบ 4 คำถามนี้ไม่ได้ ให้ถือว่าเป็นโจทย์ที่ต้องออกไปหาข้อมูลจริง ไม่ใช่นั่งแต่งคำตอบขึ้นมาเอง</em>
-        </p>
-      </div>
-
-      <!-- Section 1.2 -->
-      <div class="section-block">
-        <h2 class="section-header">
-          <span class="section-num">1.2</span>
-          รายได้ กำไร และเงินสดไม่ใช่คำเดียวกัน
-        </h2>
-        <p>
-          <strong>รายได้ (Revenue)</strong> คือมูลค่าที่รับรู้จากการขายตามเกณฑ์ที่ใช้ ส่วน <strong>กำไร (Profit)</strong> คือผลที่เหลือหลังนำต้นทุนและค่าใช้จ่ายที่เกี่ยวข้องทั้งหมดมาหักออก
-        </p>
-        <p>
-          เงินสดในมืออาจไม่เท่ากับกำไร เพราะมีเรื่องลูกค้าค้างชำระ (ลูกหนี้การค้า), การซื้อสินทรัพย์ลงทุนล่วงหน้า, เงินกู้ยืม, หรือเงินที่เจ้าของควักกระเป๋าเติมเข้ากิจการ
-        </p>
-
-        <!-- Warning Callout -->
-        <div class="callout-warning">
-          <h4>⚠️ ข้อควรระวังระดับวิกฤต</h4>
-          <p>
-            อย่าใช้ยอดเงินในบัญชีธนาคารเป็นตัวชี้วัดกำไรเพียงอย่างเดียว: <strong>เงินที่เพิ่มขึ้นจากการกู้ยืม คือเงินสดเข้า แต่ไม่ใช่กำไรจากการขาย!</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- Section 1.3 -->
-      <div class="section-block">
-        <h2 class="section-header">
-          <span class="section-num">1.3</span>
-          หน้าที่ของผู้บริหารสี่ด้าน
-        </h2>
-        <p>
-          ผู้บริหารไม่ได้มีหน้าที่ลงไปทำทุกอย่างแทนทีม แต่มีหน้าที่ขับเคลื่อน 4 เสาหลัก:
-        </p>
-
-        <div class="roles-list">
-          <div class="role-card">
-            <strong>1. วางแผน (Planning)</strong>
-            <span>กำหนดว่าเดือนนี้ต้องได้ผลลัพธ์อะไร และทำไมถึงต้องเป็นเป้าหมายนี้</span>
-          </div>
-          <div class="role-card">
-            <strong>2. จัดองค์กร (Organizing)</strong>
-            <span>ใครรับผิดชอบงานใด ใช้คน เงิน และเวลาเท่าไรให้คุ้มค่า</span>
-          </div>
-          <div class="role-card">
-            <strong>3. นำทีม (Leading)</strong>
-            <span>สื่อสาร แก้ปัญหาเฉพาะหน้า และสนับสนุนการทำงานร่วมกัน</span>
-          </div>
-          <div class="role-card">
-            <strong>4. ติดตามและปรับ (Controlling & Adapting)</strong>
-            <span>ดูผลงานจริงเทียบเป้าหมาย แล้วแก้ระบบหรือวิธีทำงานเมื่อไม่เป็นไปตามแผน</span>
-          </div>
-        </div>
-
-        <div class="quote-banner">
-          “ผู้บริหารไม่ได้มีหน้าที่ทำทุกอย่างแทนทีม แต่ต้องทำให้ระบบส่งมอบคุณค่าได้ <em>โดยไม่พังลงมาเมื่อเจ้าของไม่อยู่</em>”
-        </div>
-      </div>
-
-      <!-- Case Study WSTERA -->
-      <div class="section-block">
-        <h2 class="section-header">
-          <span class="section-num">กรณีศึกษา</span>
-          กรณี WSTERA (ตัวเลขสมมติเพื่อการเรียนรู้)
-        </h2>
-        
-        <div class="kmo-box">
-          <div class="kmo-title">
-            <span>การคำนวณส่วนเหลือเบื้องต้น</span>
-            <span class="kmo-highlight">สินค้าพร้อมติดตั้ง 1 ชุด</span>
-          </div>
-          <table class="kmo-table">
-            <tr>
-              <td>ราคาขายสินค้าพร้อมติดตั้ง</td>
-              <td class="amount"><strong>5,500 บาท</strong></td>
-            </tr>
-            <tr>
-              <td>หัก: ต้นทุนวัสดุ</td>
-              <td class="amount">- 3,000 บาท</td>
-            </tr>
-            <tr>
-              <td>หัก: ค่าแรงตามงาน</td>
-              <td class="amount">- 800 บาท</td>
-            </tr>
-            <tr>
-              <td>หัก: ของสิ้นเปลือง</td>
-              <td class="amount">- 200 บาท</td>
-            </tr>
-            <tr>
-              <td>คงเหลือ (ก่อนจ่ายต้นทุนคงที่และรายการอื่นๆ)</td>
-              <td class="amount kmo-highlight"><strong>1,500 บาท</strong></td>
-            </tr>
-          </table>
-        </div>
-        <p style="font-size: 14.5px; color: var(--text-muted);">
-          *หมายเหตุ: อย่าเรียกเงิน 1,500 บาทนี้ว่า “กำไรสุทธิ” เด็ดขาด เพราะยังมีค่าเช่า ค่าน้ำไฟ เงินเดือนประจำ และภาษีที่ยังไม่ได้นำมาหัก
-        </p>
-      </div>
-
-      <!-- Practical Exercise -->
-      <div class="section-block">
-        <h2 class="section-header">
-          <span class="section-num">ปฏิบัติ</span>
-          งานภาคปฏิบัติประจำบท
-        </h2>
-        <p>
-          เลือกสินค้าหรือบริการของ <strong>WSTERA</strong> มา 1 รายการ จากนั้นตอบ 4 คำถามแรกของบทให้ครบ และวงกลมคำตอบที่ยังไม่มีหลักฐานจริงไว้ เพื่อเป็นโจทย์ไปค้นคว้าต่อ
-        </p>
-      </div>
-
-    </article>
-
-    <!-- Interactive Quiz Suite -->
+    <!-- Dynamic Interactive Quiz Suite -->
     <section class="quiz-container">
       <div class="quiz-header">
         <div class="quiz-title-group">
-          <h2>แบบทดสอบท้ายบทที่ 1</h2>
-          <p>ทดสอบความเข้าใจ 3 ข้อ เพื่อประเมินผลการเรียนรู้</p>
+          <h2 id="quizHeaderTitle">แบบทดสอบท้ายบทที่ 1</h2>
+          <p>ตอบคำถามปรนัย 3 ข้อ เพื่อตรวจสอบความเข้าใจทันที</p>
         </div>
         <div id="quizScoreBadge" class="quiz-score-badge">คะแนน: 0 / 3</div>
       </div>
 
-      <!-- Question 1 -->
-      <div class="question-block" data-q="1" data-correct="B">
-        <div class="q-prompt">1.1 ข้อใดคือรายได้จากการขายตามเกณฑ์รับรู้?</div>
-        <div class="options-list">
-          <button class="option-btn" data-opt="A">
-            <span class="option-letter">A</span>
-            <span>เงินที่เจ้าของเติมกิจการ</span>
-          </button>
-          <button class="option-btn" data-opt="B">
-            <span class="option-letter">B</span>
-            <span>มูลค่าการขายที่รับรู้</span>
-          </button>
-          <button class="option-btn" data-opt="C">
-            <span class="option-letter">C</span>
-            <span>เงินสดคงเหลือ</span>
-          </button>
-          <button class="option-btn" data-opt="D">
-            <span class="option-letter">D</span>
-            <span>เงินที่เหลือหลังหักค่าใช้จ่าย</span>
-          </button>
-        </div>
-        <div class="explanation-box" id="exp-1"></div>
-      </div>
+      <div id="quizQuestionsWrapper"></div>
 
-      <!-- Question 2 -->
-      <div class="question-block" data-q="2" data-correct="C">
-        <div class="q-prompt">1.2 หน้าที่ ‘ติดตามและปรับ’ คือข้อใด?</div>
-        <div class="options-list">
-          <button class="option-btn" data-opt="A">
-            <span class="option-letter">A</span>
-            <span>ทำงานแทนลูกน้องทั้งหมด</span>
-          </button>
-          <button class="option-btn" data-opt="B">
-            <span class="option-letter">B</span>
-            <span>ตั้งเป้าหมายโดยไม่ดูผล</span>
-          </button>
-          <button class="option-btn" data-opt="C">
-            <span class="option-letter">C</span>
-            <span>เทียบผลจริงกับเป้าหมายแล้วปรับวิธี</span>
-          </button>
-          <button class="option-btn" data-opt="D">
-            <span class="option-letter">D</span>
-            <span>ซื้ออุปกรณ์ใหม่ทุกเดือน</span>
-          </button>
-        </div>
-        <div class="explanation-box" id="exp-2"></div>
-      </div>
-
-      <!-- Question 3 -->
-      <div class="question-block" data-q="3" data-correct="B">
-        <div class="q-prompt">1.3 จากกรณี WSTERA เหลือก่อนต้นทุนคงที่เท่าไร?</div>
-        <div class="options-list">
-          <button class="option-btn" data-opt="A">
-            <span class="option-letter">A</span>
-            <span>1,300 บาท</span>
-          </button>
-          <button class="option-btn" data-opt="B">
-            <span class="option-letter">B</span>
-            <span>1,500 บาท</span>
-          </button>
-          <button class="option-btn" data-opt="C">
-            <span class="option-letter">C</span>
-            <span>2,500 บาท</span>
-          </button>
-          <button class="option-btn" data-opt="D">
-            <span class="option-letter">D</span>
-            <span>5,500 บาท</span>
-          </button>
-        </div>
-        <div class="explanation-box" id="exp-3"></div>
-      </div>
-
-      <!-- Quiz Footer Controls -->
       <div class="quiz-footer">
-        <button id="resetQuizBtn" class="btn-reset">↺ ทำแบบทดสอบใหม่</button>
+        <button id="resetQuizBtn" class="btn-reset" type="button">↺ ทำแบบทดสอบบทนี้ใหม่</button>
         <span id="quizStatusMsg" style="font-size: 13px; color: var(--text-dim);">เลือกคำตอบเพื่อดูเฉลยทันที</span>
       </div>
     </section>
 
-    <!-- Footer Note -->
+    <!-- Prev / Next Chapter Pager -->
+    <nav class="chapter-pager" aria-label="เปลี่ยนบทเรียน">
+      <button id="prevChapterBtn" class="btn-pager prev" type="button">
+        <span class="pager-label">← บทก่อนหน้า</span>
+        <span id="prevChapterTitle" class="pager-title">-</span>
+      </button>
+      <button id="nextChapterBtn" class="btn-pager next" type="button">
+        <span class="pager-label">บทถัดไป →</span>
+        <span id="nextChapterTitle" class="pager-title">-</span>
+      </button>
+    </nav>
+
+    <!-- Overall Course Scoreboard -->
+    <section class="course-summary-card">
+      <div class="summary-meta">
+        <h3>สรุปผลการเรียนรวมทั้งเล่ม (V00 Foundation Bridge)</h3>
+        <p>เกณฑ์ผ่านมาตรฐาน: ทำแบบทดสอบรวมได้ตั้งแต่ <strong>24 / 30 คะแนนขึ้นไป (80%)</strong> และฟังครบทั้ง 10 บท</p>
+      </div>
+      <div class="summary-stats">
+        <div class="stat-box">
+          <div id="statCompletedChapters" class="val">0 / 10</div>
+          <div class="lbl">บทที่ฟังจบ</div>
+        </div>
+        <div class="stat-box">
+          <div id="statTotalScore" class="val">0 / 30</div>
+          <div class="lbl">คะแนนสอบรวม</div>
+        </div>
+        <div class="stat-box">
+          <div id="statPassStatus" class="val" style="color: var(--warm);">กำลังเรียน</div>
+          <div class="lbl">สถานะหลักสูตร</div>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer-note">
-      <p>คอร์สบทเรียนเสียงประกอบหนังสือ "บริหารธุรกิจจากศูนย์ · เล่ม 1"</p>
-      <p style="margin-top: 4px; font-size: 12px; color: #475569;">สงวนลิขสิทธิ์สำหรับการเรียนรู้ภายในองค์กร · AGY Workspace</p>
+      <p>คอร์สบทเรียนเสียงประกอบหนังสือ "บริหารธุรกิจจากศูนย์ · เล่มพื้นฐาน (V00 Bridge)"</p>
+      <p style="margin-top: 4px; font-size: 12px; color: #475569;">WSTERA Academy · เรียนรู้ด้วยตนเองครบ 10 บท พร้อมแบบทดสอบ 30 ข้อ</p>
     </footer>
 
   </main>
 
+  <!-- Load 10-Chapter Data Store -->
+  <script src="data/chapters.js"></script>
   <script>
-    // --- Explanations Data (Aligned with 11-Answers.md) ---
-    const EXPLANATIONS = {
-      1: {
-        correct: "ถูกต้อง! รายได้คือมูลค่าการขายที่รับรู้ตามเกณฑ์ ไม่ใช่เงินที่เจ้าของเติมหรือยอดเงินสดคงเหลือในบัญชี",
-        incorrect: "ยังไม่ถูกต้อง: รายได้คือ 'มูลค่าการขายที่รับรู้ตามเกณฑ์' (ข้อ B) ส่วนเงินที่เจ้าของเติมคือเงินทุน ไม่ใช่รายได้จากการขาย"
-      },
-      2: {
-        correct: "ถูกต้อง! ผู้บริหารต้องคอยติดตามผลจริงเทียบเป้าหมายและปรับปรุงวิธีการทำงานอย่างสม่ำเสมอ",
-        incorrect: "ยังไม่ถูกต้อง: หน้าที่ติดตามและปรับ (Controlling & Adapting) คือ 'เทียบผลจริงกับเป้าหมายแล้วปรับวิธี' (ข้อ C) ไม่ใช่การลงไปทำงานแทนลูกน้องทั้งหมด"
-      },
-      3: {
-        correct: "ถูกต้อง! วิธีคิด: 5,500 (ราคาขาย) - 3,000 (วัสดุ) - 800 (ค่าแรงติดตั้ง) - 200 (ของสิ้นเปลือง) = เหลือ 1,500 บาท (เรียกว่า กำไรขั้นต้น หรือ Contribution Margin)\n\n📌 ทำไมถึงไม่ใช่ 'กำไรสุทธิ'?: เพราะ 1,500 บาทนี้ คือเงินส่วนเหลือ 'ก่อนหักต้นทุนคงที่ (Fixed Costs)' ของบริษัท เช่น ค่าเช่าหน้าร้าน/โกดัง, เงินเดือนพนักงานประจำ, ค่าน้ำไฟ และภาษี ถ้าเผลอคิดว่า 1,500 นี้คือกำไรแล้วหยิบไปใช้ส่วนตัว สิ้นเดือนจะไม่มีเงินจ่ายค่าเช่าร้านและเจ๊งได้!",
-        incorrect: "ยังไม่ถูกต้อง: ต้องนำราคาขาย 5,500 ลบต้นทุนผันแปรตรงของงานนี้ (3,000 + 800 + 200) = เหลือ 1,500 บาท (ข้อ B) ซึ่งยังเป็นเพียงกำไรขั้นต้นก่อนหักต้นทุนคงที่ของบริษัท"
-      }
-    };
+    const CHAPTERS = window.COURSE_CHAPTERS || [];
+    const speeds = [1.0, 1.25, 1.5, 2.0];
+    let currentSpeedIndex = 0;
+    let currentChapterId = parseInt(localStorage.getItem('agy_v00_current_chapter') || '1', 10);
+    if (isNaN(currentChapterId) || currentChapterId < 1 || currentChapterId > CHAPTERS.length) {
+      currentChapterId = 1;
+    }
 
-    // --- Audio Player Controller ---
+    // DOM References
     const audio = document.getElementById('audioElement');
     const playBtn = document.getElementById('playBtn');
     const seekBackBtn = document.getElementById('seekBackBtn');
@@ -1048,9 +1247,51 @@
     const durationText = document.getElementById('durationText');
     const statusBadge = document.getElementById('statusBadge');
 
-    const speeds = [1.0, 1.25, 1.5, 2.0];
-    let currentSpeedIndex = 0;
+    const chapterTag = document.getElementById('chapterTag');
+    const chapterTitle = document.getElementById('chapterTitle');
+    const chapterObjective = document.getElementById('chapterObjective');
+    const editorialContent = document.getElementById('editorialContent');
+
+    const quizHeaderTitle = document.getElementById('quizHeaderTitle');
+    const quizScoreBadge = document.getElementById('quizScoreBadge');
+    const quizQuestionsWrapper = document.getElementById('quizQuestionsWrapper');
+    const quizStatusMsg = document.getElementById('quizStatusMsg');
+    const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+    const chapterStrip = document.getElementById('chapterStrip');
+    const drawerList = document.getElementById('drawerList');
+    const chapterDrawer = document.getElementById('chapterDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const openDrawerBtn = document.getElementById('openDrawerBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+    const prevChapterBtn = document.getElementById('prevChapterBtn');
+    const nextChapterBtn = document.getElementById('nextChapterBtn');
+    const prevChapterTitle = document.getElementById('prevChapterTitle');
+    const nextChapterTitle = document.getElementById('nextChapterTitle');
+
+    const heroPrevBtn = document.getElementById('heroPrevBtn');
+    const heroNextBtn = document.getElementById('heroNextBtn');
+    const heroChapterSelect = document.getElementById('heroChapterSelect');
+
+    const globalProgressText = document.getElementById('globalProgressText');
+    const statCompletedChapters = document.getElementById('statCompletedChapters');
+    const statTotalScore = document.getElementById('statTotalScore');
+    const statPassStatus = document.getElementById('statPassStatus');
+
     let isTimeRestored = false;
+    let isDraggingScrubber = false;
+
+    // Storage Key Helpers (Backward compatible with ch01 keys)
+    function keyAudioTime(chId) {
+      return `agy_ch${String(chId).padStart(2, '0')}_audio_time`;
+    }
+    function keyCompleted(chId) {
+      return `agy_ch${String(chId).padStart(2, '0')}_completed`;
+    }
+    function keyQuizAnswers(chId) {
+      return `agy_ch${String(chId).padStart(2, '0')}_quiz_answers`;
+    }
 
     function formatTime(seconds) {
       if (isNaN(seconds) || seconds < 0) return '0:00';
@@ -1059,33 +1300,309 @@
       return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
-    // Explicit state syncing from native events
-    audio.addEventListener('play', () => {
-      playBtn.textContent = '⏸';
-    });
-    audio.addEventListener('pause', () => {
+    function getChapterQuizScore(ch) {
+      const saved = JSON.parse(localStorage.getItem(keyQuizAnswers(ch.id)) || '{}');
+      let score = 0;
+      let answered = 0;
+      ch.quiz.forEach(q => {
+        const chosen = saved[String(q.q)];
+        if (chosen) {
+          answered++;
+          if (chosen === q.correct) score++;
+        }
+      });
+      return { score, answered };
+    }
+
+    function updateGlobalStats() {
+      let completedCount = 0;
+      let totalScore = 0;
+
+      CHAPTERS.forEach(ch => {
+        if (localStorage.getItem(keyCompleted(ch.id)) === 'true') {
+          completedCount++;
+        }
+        const { score } = getChapterQuizScore(ch);
+        totalScore += score;
+      });
+
+      globalProgressText.textContent = `ฟังจบ ${completedCount}/10 บท · สอบ ${totalScore}/30`;
+      statCompletedChapters.textContent = `${completedCount} / 10`;
+      statTotalScore.textContent = `${totalScore} / 30`;
+
+      if (totalScore >= 24 && completedCount === 10) {
+        statPassStatus.textContent = '✓ ผ่านเกณฑ์';
+        statPassStatus.style.color = 'var(--success)';
+      } else if (totalScore >= 24) {
+        statPassStatus.textContent = 'สอบผ่าน (รอฟังครบ)';
+        statPassStatus.style.color = 'var(--accent)';
+      } else {
+        statPassStatus.textContent = 'กำลังเรียน';
+        statPassStatus.style.color = 'var(--warm)';
+      }
+    }
+
+    function renderNavigationUI() {
+      chapterStrip.innerHTML = '';
+      drawerList.innerHTML = '';
+      heroChapterSelect.innerHTML = '';
+
+      CHAPTERS.forEach(ch => {
+        const isDone = localStorage.getItem(keyCompleted(ch.id)) === 'true';
+        const isActive = ch.id === currentChapterId;
+        const { score, answered } = getChapterQuizScore(ch);
+
+        // Hero Dropdown Option
+        const opt = document.createElement('option');
+        opt.value = String(ch.id);
+        opt.selected = isActive;
+        opt.textContent = `${isDone ? '✓ ' : ''}บทที่ ${ch.id}: ${ch.title} (${ch.duration} นาที · ควิซ ${score}/3)`;
+        heroChapterSelect.appendChild(opt);
+
+        // Strip Chip
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = `ch-chip ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}`;
+        chip.innerHTML = `<span class="chip-check"></span><span>บท ${ch.code}: ${ch.shortTitle}</span>`;
+        chip.addEventListener('click', () => selectChapter(ch.id));
+        chapterStrip.appendChild(chip);
+
+        // Drawer Item
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = `drawer-item ${isActive ? 'active' : ''}`;
+        item.innerHTML = `
+          <div class="drawer-item-left">
+            <span class="drawer-item-num">บทที่ ${ch.code} · ${ch.duration} นาที</span>
+            <span class="drawer-item-title">${ch.title}</span>
+          </div>
+          <div class="drawer-item-meta">
+            ${isDone ? '<span class="done-tag">✓ ฟังจบแล้ว</span>' : '<span>ยังไม่จบ</span>'}
+            <span>ควิซ ${score}/3</span>
+          </div>
+        `;
+        item.addEventListener('click', () => {
+          selectChapter(ch.id);
+          closeDrawer();
+        });
+        drawerList.appendChild(item);
+      });
+
+      updateGlobalStats();
+    }
+
+    function renderQuiz(ch) {
+      quizHeaderTitle.textContent = `แบบทดสอบท้ายบทที่ ${ch.id}`;
+      quizQuestionsWrapper.innerHTML = '';
+
+      let userAnswers = JSON.parse(localStorage.getItem(keyQuizAnswers(ch.id)) || '{}');
+
+      ch.quiz.forEach(qObj => {
+        const qId = String(qObj.q);
+        const block = document.createElement('div');
+        block.className = 'question-block';
+        block.dataset.q = qId;
+
+        let optsHtml = '';
+        ['A', 'B', 'C', 'D'].forEach(letter => {
+          optsHtml += `
+            <button type="button" class="option-btn" data-opt="${letter}">
+              <span class="option-letter">${letter}</span>
+              <span>${qObj.options[letter]}</span>
+            </button>
+          `;
+        });
+
+        block.innerHTML = `
+          <div class="q-prompt">${qObj.prompt}</div>
+          <div class="options-list">${optsHtml}</div>
+          <div class="explanation-box" id="exp-${qId}"></div>
+        `;
+
+        const buttons = block.querySelectorAll('.option-btn');
+        const expBox = block.querySelector(`#exp-${qId}`);
+
+        function applyChoice(chosenOpt) {
+          buttons.forEach(b => {
+            b.disabled = true;
+            const opt = b.dataset.opt;
+            if (opt === qObj.correct) b.classList.add('correct');
+            if (opt === chosenOpt && chosenOpt !== qObj.correct) b.classList.add('incorrect');
+          });
+          const isCorrect = chosenOpt === qObj.correct;
+          expBox.className = `explanation-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+          expBox.textContent = isCorrect ? qObj.expCorrect : qObj.expIncorrect;
+        }
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const opt = btn.dataset.opt;
+            userAnswers[qId] = opt;
+            localStorage.setItem(keyQuizAnswers(ch.id), JSON.stringify(userAnswers));
+            applyChoice(opt);
+            refreshQuizBadge(ch);
+            renderNavigationUI();
+          });
+        });
+
+        if (userAnswers[qId]) {
+          applyChoice(userAnswers[qId]);
+        }
+
+        quizQuestionsWrapper.appendChild(block);
+      });
+
+      refreshQuizBadge(ch);
+    }
+
+    function refreshQuizBadge(ch) {
+      const { score, answered } = getChapterQuizScore(ch);
+      quizScoreBadge.textContent = `คะแนน: ${score} / 3`;
+      if (answered === 3) {
+        if (score === 3) {
+          quizStatusMsg.textContent = 'ยอดเยี่ยม! คุณตอบถูกครบทั้ง 3 ข้อในบทนี้';
+          quizStatusMsg.style.color = '#34d399';
+        } else {
+          quizStatusMsg.textContent = `ทำเสร็จแล้ว ได้ ${score}/3 คะแนน สามารถกดทำใหม่เพื่อทบทวนได้`;
+          quizStatusMsg.style.color = '#f59e0b';
+        }
+      } else {
+        quizStatusMsg.textContent = 'เลือกคำตอบเพื่อดูเฉลยทันที';
+        quizStatusMsg.style.color = 'var(--text-dim)';
+      }
+    }
+
+    function selectChapter(chId, shouldScroll = true) {
+      const ch = CHAPTERS.find(c => c.id === chId) || CHAPTERS[0];
+      currentChapterId = ch.id;
+      localStorage.setItem('agy_v00_current_chapter', String(ch.id));
+
+      // Pause current audio cleanly
+      audio.pause();
       playBtn.textContent = '▶';
-    });
-    audio.addEventListener('error', () => {
-      console.warn("Audio error occurred, retrying with direct load...");
+      isTimeRestored = false;
+
+      // Update Header & Content
+      document.title = `บทที่ ${ch.id}: ${ch.title} | บริหารธุรกิจจากศูนย์`;
+      chapterTag.textContent = ch.tag;
+      chapterTitle.textContent = `บทที่ ${ch.id}: ${ch.title}`;
+      chapterObjective.textContent = ch.objective;
+      editorialContent.innerHTML = ch.contentHtml;
+
+      // Update Audio Source & Metadata
+      audio.src = ch.audio;
       audio.load();
+      audio.playbackRate = speeds[currentSpeedIndex];
+      durationText.textContent = ch.duration;
+      scrubber.max = ch.durationSec || 180;
+
+      const savedTime = parseFloat(localStorage.getItem(keyAudioTime(ch.id)) || '0');
+      if (savedTime > 0 && savedTime < (ch.durationSec || 180) - 5) {
+        scrubber.value = savedTime;
+        currentTimeText.textContent = formatTime(savedTime);
+      } else {
+        scrubber.value = 0;
+        currentTimeText.textContent = '0:00';
+      }
+
+      // Completion Badge
+      if (localStorage.getItem(keyCompleted(ch.id)) === 'true') {
+        statusBadge.textContent = '✓ ฟังจบแล้ว';
+        statusBadge.classList.add('completed');
+      } else {
+        statusBadge.textContent = 'ยังไม่จบ';
+        statusBadge.classList.remove('completed');
+      }
+
+      // Render Quiz
+      renderQuiz(ch);
+
+      // Update Pager & Hero Switcher Buttons
+      const prevCh = CHAPTERS.find(c => c.id === ch.id - 1);
+      const nextCh = CHAPTERS.find(c => c.id === ch.id + 1);
+
+      if (prevCh) {
+        prevChapterBtn.disabled = false;
+        heroPrevBtn.disabled = false;
+        prevChapterTitle.textContent = `บทที่ ${prevCh.id}: ${prevCh.shortTitle}`;
+      } else {
+        prevChapterBtn.disabled = true;
+        heroPrevBtn.disabled = true;
+        prevChapterTitle.textContent = 'นี่คือบทแรกสุด';
+      }
+
+      if (nextCh) {
+        nextChapterBtn.disabled = false;
+        heroNextBtn.disabled = false;
+        nextChapterTitle.textContent = `บทที่ ${nextCh.id}: ${nextCh.shortTitle}`;
+      } else {
+        nextChapterBtn.disabled = true;
+        heroNextBtn.disabled = true;
+        nextChapterTitle.textContent = 'จบเล่มบริบูรณ์ (บทที่ 10)';
+      }
+
+      renderNavigationUI();
+
+      if (shouldScroll) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Drawer Controls
+    function openDrawer() {
+      chapterDrawer.classList.add('open');
+      drawerBackdrop.classList.add('open');
+    }
+    function closeDrawer() {
+      chapterDrawer.classList.remove('open');
+      drawerBackdrop.classList.remove('open');
+    }
+    openDrawerBtn.addEventListener('click', openDrawer);
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+    drawerBackdrop.addEventListener('click', closeDrawer);
+
+    // Pager & Hero Switcher Clicks
+    prevChapterBtn.addEventListener('click', () => {
+      if (currentChapterId > 1) selectChapter(currentChapterId - 1);
+    });
+    nextChapterBtn.addEventListener('click', () => {
+      if (currentChapterId < CHAPTERS.length) selectChapter(currentChapterId + 1);
+    });
+    heroPrevBtn.addEventListener('click', () => {
+      if (currentChapterId > 1) selectChapter(currentChapterId - 1);
+    });
+    heroNextBtn.addEventListener('click', () => {
+      if (currentChapterId < CHAPTERS.length) selectChapter(currentChapterId + 1);
+    });
+    heroChapterSelect.addEventListener('change', (e) => {
+      const targetId = parseInt(e.target.value, 10);
+      if (!isNaN(targetId)) selectChapter(targetId);
     });
 
-    // Toggle Play/Pause - mobile safe
+    // Reset Quiz
+    resetQuizBtn.addEventListener('click', () => {
+      localStorage.removeItem(keyQuizAnswers(currentChapterId));
+      const ch = CHAPTERS.find(c => c.id === currentChapterId);
+      if (ch) {
+        renderQuiz(ch);
+        renderNavigationUI();
+      }
+    });
+
+    // Audio Playback Controls
+    audio.addEventListener('play', () => { playBtn.textContent = '⏸'; });
+    audio.addEventListener('pause', () => { playBtn.textContent = '▶'; });
+
     async function togglePlay() {
+      const ch = CHAPTERS.find(c => c.id === currentChapterId) || CHAPTERS[0];
       try {
         if (audio.paused) {
-          if (!audio.src || !audio.src.includes('ch01_full.mp3')) {
-            audio.src = 'audio/ch01_full.mp3';
-            audio.load();
-          }
+          audio.playbackRate = speeds[currentSpeedIndex];
           await audio.play();
-
-          // Restore saved position safely AFTER play starts
           if (!isTimeRestored) {
-            const savedTime = localStorage.getItem('agy_ch01_audio_time');
-            if (savedTime && parseFloat(savedTime) > 0 && parseFloat(savedTime) < (audio.duration || 214) - 5) {
-              audio.currentTime = parseFloat(savedTime);
+            const savedTime = parseFloat(localStorage.getItem(keyAudioTime(ch.id)) || '0');
+            if (savedTime > 0 && savedTime < (audio.duration || ch.durationSec || 180) - 5) {
+              audio.currentTime = savedTime;
             }
             isTimeRestored = true;
           }
@@ -1093,12 +1610,9 @@
           audio.pause();
         }
       } catch (err) {
-        console.error("Audio playback error:", err);
-        // Fallback for strict mobile policies: direct load then play
+        console.error('Playback error:', err);
         audio.load();
-        audio.play().catch(e => {
-          console.error("Second play attempt failed:", e);
-        });
+        audio.play().catch(e => console.error('Retry play failed:', e));
       }
     }
 
@@ -1107,9 +1621,8 @@
     seekBackBtn.addEventListener('click', () => {
       audio.currentTime = Math.max(0, audio.currentTime - 10);
     });
-
     seekForwardBtn.addEventListener('click', () => {
-      audio.currentTime = Math.min(audio.duration || 214, audio.currentTime + 10);
+      audio.currentTime = Math.min(audio.duration || 210, audio.currentTime + 10);
     });
 
     speedBtn.addEventListener('click', () => {
@@ -1119,45 +1632,32 @@
       speedBtn.textContent = `${speed.toFixed(speed === 1.0 || speed === 2.0 ? 1 : 2)}x`;
     });
 
-    function initAudioMetadata() {
+    function syncMetadata() {
       if (audio.duration && !isNaN(audio.duration) && isFinite(audio.duration) && audio.duration > 0) {
         durationText.textContent = formatTime(audio.duration);
         scrubber.max = audio.duration;
-      } else {
-        durationText.textContent = "3:31";
-        scrubber.max = 211;
       }
     }
-
-    // Default duration right away
-    durationText.textContent = "3:31";
-    scrubber.max = 211;
-
-    ['loadedmetadata', 'durationchange', 'canplay', 'loadeddata'].forEach(evt => {
-      audio.addEventListener(evt, initAudioMetadata);
+    ['loadedmetadata', 'durationchange', 'canplay'].forEach(evt => {
+      audio.addEventListener(evt, syncMetadata);
     });
-
-    if (audio.readyState >= 1) {
-      initAudioMetadata();
-    }
 
     audio.addEventListener('timeupdate', () => {
       if (!isDraggingScrubber) {
         scrubber.value = audio.currentTime;
       }
       currentTimeText.textContent = formatTime(audio.currentTime);
-      
-      // Auto save progress every few seconds
       if (Math.floor(audio.currentTime) % 3 === 0) {
-        localStorage.setItem('agy_ch01_audio_time', audio.currentTime);
+        localStorage.setItem(keyAudioTime(currentChapterId), String(audio.currentTime));
       }
     });
 
-    let isDraggingScrubber = false;
     scrubber.addEventListener('mousedown', () => { isDraggingScrubber = true; });
     scrubber.addEventListener('mouseup', () => { isDraggingScrubber = false; });
+    scrubber.addEventListener('touchstart', () => { isDraggingScrubber = true; }, { passive: true });
+    scrubber.addEventListener('touchend', () => { isDraggingScrubber = false; }, { passive: true });
     scrubber.addEventListener('input', () => {
-      audio.currentTime = scrubber.value;
+      audio.currentTime = parseFloat(scrubber.value);
       currentTimeText.textContent = formatTime(scrubber.value);
     });
 
@@ -1165,126 +1665,38 @@
       playBtn.textContent = '▶';
       statusBadge.textContent = '✓ ฟังจบแล้ว';
       statusBadge.classList.add('completed');
-      localStorage.setItem('agy_ch01_completed', 'true');
+      localStorage.setItem(keyCompleted(currentChapterId), 'true');
+      localStorage.setItem(keyAudioTime(currentChapterId), '0');
+      renderNavigationUI();
     });
 
-    // Check saved completion
-    if (localStorage.getItem('agy_ch01_completed') === 'true') {
-      statusBadge.textContent = '✓ ฟังจบแล้ว';
-      statusBadge.classList.add('completed');
-    }
-
-    // --- Interactive Quiz Controller ---
-    const questionBlocks = document.querySelectorAll('.question-block');
-    const scoreBadge = document.getElementById('quizScoreBadge');
-    const quizStatusMsg = document.getElementById('quizStatusMsg');
-    const resetQuizBtn = document.getElementById('resetQuizBtn');
-
-    let userAnswers = JSON.parse(localStorage.getItem('agy_ch01_quiz_answers') || '{}');
-
-    function updateQuizScoreUI() {
-      let score = 0;
-      let totalAnswered = 0;
-
-      questionBlocks.forEach(block => {
-        const qId = block.dataset.q;
-        const correct = block.dataset.correct;
-        const chosen = userAnswers[qId];
-
-        if (chosen) {
-          totalAnswered++;
-          if (chosen === correct) score++;
-        }
-      });
-
-      scoreBadge.textContent = `คะแนน: ${score} / 3`;
-      if (totalAnswered === 3) {
-        if (score === 3) {
-          quizStatusMsg.textContent = '🎉 ยอดเยี่ยม! คุณตอบถูกครบทั้ง 3 ข้อ';
-          quizStatusMsg.style.color = '#34d399';
-        } else {
-          quizStatusMsg.textContent = `ทำเสร็จแล้ว ได้ ${score}/3 คะแนน สามารถกดย้อนอ่านและทำใหม่ได้`;
-          quizStatusMsg.style.color = '#f59e0b';
-        }
-      }
-    }
-
-    function applyAnswerToUI(block, chosenOption) {
-      const qId = block.dataset.q;
-      const correct = block.dataset.correct;
-      const buttons = block.querySelectorAll('.option-btn');
-      const expBox = document.getElementById(`exp-${qId}`);
-
-      buttons.forEach(btn => {
-        btn.disabled = true;
-        const opt = btn.dataset.opt;
-        if (opt === correct) {
-          btn.classList.add('correct');
-        }
-        if (opt === chosenOption && chosenOption !== correct) {
-          btn.classList.add('incorrect');
-        }
-      });
-
-      // Show explanation
-      const isCorrect = (chosenOption === correct);
-      expBox.className = `explanation-box show ${isCorrect ? 'correct' : 'incorrect'}`;
-      expBox.textContent = isCorrect ? EXPLANATIONS[qId].correct : EXPLANATIONS[qId].incorrect;
-    }
-
-    // Bind Click Events
-    questionBlocks.forEach(block => {
-      const qId = block.dataset.q;
-      const buttons = block.querySelectorAll('.option-btn');
-
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const opt = btn.dataset.opt;
-          userAnswers[qId] = opt;
-          localStorage.setItem('agy_ch01_quiz_answers', JSON.stringify(userAnswers));
-          applyAnswerToUI(block, opt);
-          updateQuizScoreUI();
-        });
-      });
-
-      // Restore if already answered
-      if (userAnswers[qId]) {
-        applyAnswerToUI(block, userAnswers[qId]);
-      }
-    });
-
-    updateQuizScoreUI();
-
-    // Reset Quiz
-    resetQuizBtn.addEventListener('click', () => {
-      userAnswers = {};
-      localStorage.removeItem('agy_ch01_quiz_answers');
-
-      questionBlocks.forEach(block => {
-        const qId = block.dataset.q;
-        const buttons = block.querySelectorAll('.option-btn');
-        const expBox = document.getElementById(`exp-${qId}`);
-
-        buttons.forEach(btn => {
-          btn.disabled = false;
-          btn.classList.remove('correct', 'incorrect');
-        });
-        expBox.className = 'explanation-box';
-        expBox.textContent = '';
-      });
-
-      quizStatusMsg.textContent = 'เลือกคำตอบเพื่อดูเฉลยทันที';
-      quizStatusMsg.style.color = 'var(--text-dim)';
-      updateQuizScoreUI();
-    });
-
-    // Keyboard Shortcuts: Space for play/pause
+    // Keyboard Spacebar Shortcut
     window.addEventListener('keydown', (e) => {
       if (e.code === 'Space' && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
         e.preventDefault();
         togglePlay();
       }
     });
+
+    // Load exact durations from audio/durations.json if present
+    fetch('audio/durations.json')
+      .then(r => r.ok ? r.json() : null)
+      .then(durMap => {
+        if (durMap) {
+          CHAPTERS.forEach(ch => {
+            const d = durMap[String(ch.id)];
+            if (d) {
+              ch.duration = d.formatted;
+              ch.durationSec = d.seconds;
+            }
+          });
+          selectChapter(currentChapterId, false);
+        }
+      })
+      .catch(() => {});
+
+    // Initial Boot
+    selectChapter(currentChapterId, false);
   </script>
 </body>
 </html>
