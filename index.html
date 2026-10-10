@@ -934,6 +934,16 @@
       color: #fca5a5;
     }
 
+    .option-btn.selected {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    .option-btn.selected .option-letter {
+      background: var(--accent);
+      color: #0b0f19;
+    }
+
     .quiz-footer {
       display: flex;
       justify-content: space-between;
@@ -944,11 +954,61 @@
       gap: 12px;
       flex-wrap: wrap;
     }
+    .quiz-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-submit-quiz {
+      background: var(--accent);
+      color: #0b0f19;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font-thai);
+      transition: all 0.15s ease;
+    }
+    .btn-submit-quiz:hover:not(:disabled) {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+    .btn-submit-quiz:disabled {
+      background: var(--surface-elevated);
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      cursor: not-allowed;
+    }
+    .btn-toggle-key {
+      background: var(--warm-glow);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: var(--warm);
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font-thai);
+      transition: all 0.15s ease;
+      display: none;
+    }
+    .btn-toggle-key.visible {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-toggle-key:hover {
+      background: rgba(245, 158, 11, 0.24);
+      border-color: var(--warm);
+    }
     .btn-reset {
       background: transparent;
       border: 1px solid var(--border);
       color: var(--text-dim);
-      padding: 8px 16px;
+      padding: 9px 14px;
       border-radius: 8px;
       font-size: 13px;
       cursor: pointer;
@@ -958,6 +1018,83 @@
     .btn-reset:hover {
       color: var(--text);
       border-color: var(--text-muted);
+    }
+
+    /* Separate Answer Key Panel (Below Quiz) */
+    .answer-key-panel {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px dashed var(--border);
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      animation: fadeIn 0.25s ease;
+    }
+    .answer-key-panel.open {
+      display: flex;
+    }
+    .answer-key-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .answer-key-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--warm);
+    }
+    .answer-key-card {
+      background: rgba(11, 15, 25, 0.65);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .answer-key-card.is-correct {
+      border-left: 3px solid var(--success);
+    }
+    .answer-key-card.is-incorrect {
+      border-left: 3px solid var(--danger);
+    }
+    .ak-q-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .ak-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+    .ak-badge {
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+    .ak-badge.user-ok {
+      background: var(--success-surface);
+      color: #34d399;
+      border: 1px solid var(--success-border);
+    }
+    .ak-badge.user-wrong {
+      background: var(--danger-surface);
+      color: #f87171;
+      border: 1px solid var(--danger-border);
+    }
+    .ak-badge.correct-ans {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .ak-exp-text {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.65;
+      white-space: pre-line;
     }
 
     /* Chapter Prev / Next Footer Bar */
@@ -1171,16 +1308,29 @@
       <div class="quiz-header">
         <div class="quiz-title-group">
           <h2 id="quizHeaderTitle">แบบทดสอบท้ายบทที่ 1</h2>
-          <p>ตอบคำถามปรนัย 3 ข้อ เพื่อตรวจสอบความเข้าใจทันที</p>
+          <p>เลือกคำตอบให้ครบทั้ง 3 ข้อ แล้วกดส่งคำตอบเพื่อตรวจคะแนนและเปิดอ่านเฉลย</p>
         </div>
-        <div id="quizScoreBadge" class="quiz-score-badge">คะแนน: 0 / 3</div>
+        <div id="quizScoreBadge" class="quiz-score-badge">เลือกแล้ว: 0 / 3</div>
       </div>
 
       <div id="quizQuestionsWrapper"></div>
 
       <div class="quiz-footer">
-        <button id="resetQuizBtn" class="btn-reset" type="button">↺ ทำแบบทดสอบบทนี้ใหม่</button>
-        <span id="quizStatusMsg" style="font-size: 13px; color: var(--text-dim);">เลือกคำตอบเพื่อดูเฉลยทันที</span>
+        <div class="quiz-btn-group">
+          <button id="submitQuizBtn" class="btn-submit-quiz" type="button" disabled>✓ ส่งคำตอบเพื่อตรวจคะแนน (0/3)</button>
+          <button id="toggleAnswerKeyBtn" class="btn-toggle-key" type="button">📖 เปิดอ่านเฉลยและคำอธิบายบทนี้</button>
+          <button id="resetQuizBtn" class="btn-reset" type="button">↺ ทำแบบทดสอบบทนี้ใหม่</button>
+        </div>
+        <span id="quizStatusMsg" style="font-size: 13px; color: var(--text-dim);">เลือกคำตอบให้ครบ 3 ข้อก่อนส่งคำตอบ</span>
+      </div>
+
+      <!-- Separate Answer Key & Explanations Panel (Hidden until toggled after submit) -->
+      <div id="answerKeyPanel" class="answer-key-panel">
+        <div class="answer-key-header">
+          <h3 id="answerKeyTitle">📖 เฉลยและคำอธิบายท้ายบทที่ 1</h3>
+          <span style="font-size: 12px; color: var(--text-muted);">เปรียบเทียบคำตอบของคุณกับหลักการที่ถูกต้อง</span>
+        </div>
+        <div id="answerKeyList" style="display: flex; flex-direction: column; gap: 14px;"></div>
       </div>
     </section>
 
@@ -1256,7 +1406,12 @@
     const quizScoreBadge = document.getElementById('quizScoreBadge');
     const quizQuestionsWrapper = document.getElementById('quizQuestionsWrapper');
     const quizStatusMsg = document.getElementById('quizStatusMsg');
+    const submitQuizBtn = document.getElementById('submitQuizBtn');
+    const toggleAnswerKeyBtn = document.getElementById('toggleAnswerKeyBtn');
     const resetQuizBtn = document.getElementById('resetQuizBtn');
+    const answerKeyPanel = document.getElementById('answerKeyPanel');
+    const answerKeyTitle = document.getElementById('answerKeyTitle');
+    const answerKeyList = document.getElementById('answerKeyList');
 
     const chapterStrip = document.getElementById('chapterStrip');
     const drawerList = document.getElementById('drawerList');
@@ -1282,7 +1437,7 @@
     let isTimeRestored = false;
     let isDraggingScrubber = false;
 
-    // Storage Key Helpers (Backward compatible with ch01 keys)
+    // Storage Key Helpers
     function keyAudioTime(chId) {
       return `agy_ch${String(chId).padStart(2, '0')}_audio_time`;
     }
@@ -1291,6 +1446,9 @@
     }
     function keyQuizAnswers(chId) {
       return `agy_ch${String(chId).padStart(2, '0')}_quiz_answers`;
+    }
+    function keyQuizSubmitted(chId) {
+      return `agy_ch${String(chId).padStart(2, '0')}_quiz_submitted`;
     }
 
     function formatTime(seconds) {
@@ -1302,16 +1460,23 @@
 
     function getChapterQuizScore(ch) {
       const saved = JSON.parse(localStorage.getItem(keyQuizAnswers(ch.id)) || '{}');
-      let score = 0;
+      const isSubmitted = localStorage.getItem(keyQuizSubmitted(ch.id)) === 'true';
+      let rawScore = 0;
       let answered = 0;
       ch.quiz.forEach(q => {
         const chosen = saved[String(q.q)];
         if (chosen) {
           answered++;
-          if (chosen === q.correct) score++;
+          if (chosen === q.correct) rawScore++;
         }
       });
-      return { score, answered };
+      // Only expose graded score after the user clicks Submit
+      return {
+        score: isSubmitted ? rawScore : 0,
+        rawScore,
+        answered,
+        isSubmitted
+      };
     }
 
     function updateGlobalStats() {
@@ -1350,13 +1515,14 @@
       CHAPTERS.forEach(ch => {
         const isDone = localStorage.getItem(keyCompleted(ch.id)) === 'true';
         const isActive = ch.id === currentChapterId;
-        const { score, answered } = getChapterQuizScore(ch);
+        const { score, isSubmitted } = getChapterQuizScore(ch);
+        const quizLabel = isSubmitted ? `ควิซ ${score}/3` : 'ยังไม่ส่งควิซ';
 
         // Hero Dropdown Option
         const opt = document.createElement('option');
         opt.value = String(ch.id);
         opt.selected = isActive;
-        opt.textContent = `${isDone ? '✓ ' : ''}บทที่ ${ch.id}: ${ch.title} (${ch.duration} นาที · ควิซ ${score}/3)`;
+        opt.textContent = `${isDone ? '✓ ' : ''}บทที่ ${ch.id}: ${ch.title} (${ch.duration} นาที · ${quizLabel})`;
         heroChapterSelect.appendChild(opt);
 
         // Strip Chip
@@ -1378,7 +1544,7 @@
           </div>
           <div class="drawer-item-meta">
             ${isDone ? '<span class="done-tag">✓ ฟังจบแล้ว</span>' : '<span>ยังไม่จบ</span>'}
-            <span>ควิซ ${score}/3</span>
+            <span>${quizLabel}</span>
           </div>
         `;
         item.addEventListener('click', () => {
@@ -1391,11 +1557,43 @@
       updateGlobalStats();
     }
 
+    function renderAnswerKeyPanel(ch, userAnswers) {
+      answerKeyTitle.textContent = `📖 เฉลยและคำอธิบายท้ายบทที่ ${ch.id}`;
+      answerKeyList.innerHTML = '';
+
+      ch.quiz.forEach(qObj => {
+        const qId = String(qObj.q);
+        const chosen = userAnswers[qId] || '-';
+        const isCorrect = chosen === qObj.correct;
+
+        const card = document.createElement('div');
+        card.className = `answer-key-card ${isCorrect ? 'is-correct' : 'is-incorrect'}`;
+
+        const userBadgeClass = isCorrect ? 'user-ok' : 'user-wrong';
+        const userBadgeText = isCorrect
+          ? `คำตอบของคุณ: ข้อ ${chosen} (ถูกต้อง ✓)`
+          : `คำตอบของคุณ: ข้อ ${chosen} (ยังไม่ถูก ✕)`;
+
+        card.innerHTML = `
+          <div class="ak-q-title">${qObj.prompt}</div>
+          <div class="ak-badges">
+            <span class="ak-badge ${userBadgeClass}">${userBadgeText}</span>
+            <span class="ak-badge correct-ans">เฉลยที่ถูก: ข้อ ${qObj.correct} (${qObj.options[qObj.correct]})</span>
+          </div>
+          <div class="ak-exp-text">${isCorrect ? qObj.expCorrect : qObj.expIncorrect}</div>
+        `;
+        answerKeyList.appendChild(card);
+      });
+    }
+
     function renderQuiz(ch) {
       quizHeaderTitle.textContent = `แบบทดสอบท้ายบทที่ ${ch.id}`;
       quizQuestionsWrapper.innerHTML = '';
+      answerKeyPanel.classList.remove('open');
 
       let userAnswers = JSON.parse(localStorage.getItem(keyQuizAnswers(ch.id)) || '{}');
+      const isSubmitted = localStorage.getItem(keyQuizSubmitted(ch.id)) === 'true';
+      const isKeyOpen = answerKeyPanel.classList.contains('open');
 
       ch.quiz.forEach(qObj => {
         const qId = String(qObj.q);
@@ -1416,59 +1614,88 @@
         block.innerHTML = `
           <div class="q-prompt">${qObj.prompt}</div>
           <div class="options-list">${optsHtml}</div>
-          <div class="explanation-box" id="exp-${qId}"></div>
         `;
 
         const buttons = block.querySelectorAll('.option-btn');
-        const expBox = block.querySelector(`#exp-${qId}`);
 
-        function applyChoice(chosenOpt) {
+        function updateQuestionVisuals() {
+          const chosenOpt = userAnswers[qId];
           buttons.forEach(b => {
-            b.disabled = true;
             const opt = b.dataset.opt;
-            if (opt === qObj.correct) b.classList.add('correct');
-            if (opt === chosenOpt && chosenOpt !== qObj.correct) b.classList.add('incorrect');
+            b.classList.remove('selected', 'correct', 'incorrect');
+            if (!isSubmitted) {
+              b.disabled = false;
+              if (opt === chosenOpt) {
+                b.classList.add('selected');
+              }
+            } else {
+              b.disabled = true;
+              if (opt === chosenOpt) {
+                b.classList.add(chosenOpt === qObj.correct ? 'correct' : 'incorrect');
+              }
+            }
           });
-          const isCorrect = chosenOpt === qObj.correct;
-          expBox.className = `explanation-box show ${isCorrect ? 'correct' : 'incorrect'}`;
-          expBox.textContent = isCorrect ? qObj.expCorrect : qObj.expIncorrect;
         }
 
         buttons.forEach(btn => {
           btn.addEventListener('click', () => {
+            if (localStorage.getItem(keyQuizSubmitted(ch.id)) === 'true') return;
             const opt = btn.dataset.opt;
             userAnswers[qId] = opt;
             localStorage.setItem(keyQuizAnswers(ch.id), JSON.stringify(userAnswers));
-            applyChoice(opt);
-            refreshQuizBadge(ch);
-            renderNavigationUI();
+            updateQuestionVisuals();
+            refreshQuizControls(ch);
           });
         });
 
-        if (userAnswers[qId]) {
-          applyChoice(userAnswers[qId]);
-        }
-
+        updateQuestionVisuals();
         quizQuestionsWrapper.appendChild(block);
       });
 
-      refreshQuizBadge(ch);
+      if (isSubmitted) {
+        renderAnswerKeyPanel(ch, userAnswers);
+      }
+
+      refreshQuizControls(ch);
     }
 
-    function refreshQuizBadge(ch) {
-      const { score, answered } = getChapterQuizScore(ch);
-      quizScoreBadge.textContent = `คะแนน: ${score} / 3`;
-      if (answered === 3) {
-        if (score === 3) {
-          quizStatusMsg.textContent = 'ยอดเยี่ยม! คุณตอบถูกครบทั้ง 3 ข้อในบทนี้';
-          quizStatusMsg.style.color = '#34d399';
+    function refreshQuizControls(ch) {
+      const { rawScore, answered, isSubmitted } = getChapterQuizScore(ch);
+
+      if (!isSubmitted) {
+        quizScoreBadge.textContent = `เลือกแล้ว: ${answered} / 3`;
+        submitQuizBtn.style.display = 'inline-block';
+        submitQuizBtn.disabled = answered < 3;
+        submitQuizBtn.textContent = answered < 3
+          ? `✓ ส่งคำตอบเพื่อตรวจคะแนน (${answered}/3)`
+          : `✓ ส่งคำตอบเพื่อตรวจคะแนน (ครบ 3/3 ข้อ)`;
+        toggleAnswerKeyBtn.classList.remove('visible');
+        resetQuizBtn.textContent = '↺ ล้างตัวเลือก';
+
+        if (answered < 3) {
+          quizStatusMsg.textContent = `เลือกอีก ${3 - answered} ข้อ เพื่อกดส่งคำตอบ`;
+          quizStatusMsg.style.color = 'var(--text-dim)';
         } else {
-          quizStatusMsg.textContent = `ทำเสร็จแล้ว ได้ ${score}/3 คะแนน สามารถกดทำใหม่เพื่อทบทวนได้`;
-          quizStatusMsg.style.color = '#f59e0b';
+          quizStatusMsg.textContent = 'เลือกครบ 3 ข้อแล้ว! กดปุ่ม "ส่งคำตอบเพื่อตรวจคะแนน" ได้เลย';
+          quizStatusMsg.style.color = 'var(--accent)';
         }
       } else {
-        quizStatusMsg.textContent = 'เลือกคำตอบเพื่อดูเฉลยทันที';
-        quizStatusMsg.style.color = 'var(--text-dim)';
+        quizScoreBadge.textContent = `คะแนน: ${rawScore} / 3`;
+        submitQuizBtn.style.display = 'none';
+        toggleAnswerKeyBtn.classList.add('visible');
+        const isOpen = answerKeyPanel.classList.contains('open');
+        toggleAnswerKeyBtn.textContent = isOpen
+          ? '🔼 ซ่อนเฉลยและคำอธิบาย'
+          : '📖 เปิดอ่านเฉลยและคำอธิบายบทนี้';
+        resetQuizBtn.textContent = '↺ ทำแบบทดสอบบทนี้ใหม่';
+
+        if (rawScore === 3) {
+          quizStatusMsg.textContent = '🎉 ยอดเยี่ยม! คุณตอบถูกครบทั้ง 3 ข้อ กดเปิดอ่านคำอธิบายละเอียดได้ด้านล่าง';
+          quizStatusMsg.style.color = '#34d399';
+        } else {
+          quizStatusMsg.textContent = `ได้ ${rawScore}/3 คะแนน — ลองกดทำใหม่ก่อนดูเฉลย หรือกดเปิดอ่านเฉลยด้านล่างได้เลย`;
+          quizStatusMsg.style.color = '#f59e0b';
+        }
       }
     }
 
@@ -1579,9 +1806,32 @@
       if (!isNaN(targetId)) selectChapter(targetId);
     });
 
+    // Submit Quiz -> Grade & Unlock Answer Key Button
+    submitQuizBtn.addEventListener('click', () => {
+      const ch = CHAPTERS.find(c => c.id === currentChapterId);
+      if (!ch) return;
+      const { answered } = getChapterQuizScore(ch);
+      if (answered < 3) return;
+      localStorage.setItem(keyQuizSubmitted(currentChapterId), 'true');
+      renderQuiz(ch);
+      renderNavigationUI();
+    });
+
+    // Toggle Separate Answer Key Panel
+    toggleAnswerKeyBtn.addEventListener('click', () => {
+      const ch = CHAPTERS.find(c => c.id === currentChapterId);
+      if (!ch) return;
+      answerKeyPanel.classList.toggle('open');
+      refreshQuizControls(ch);
+      if (answerKeyPanel.classList.contains('open')) {
+        answerKeyPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+
     // Reset Quiz
     resetQuizBtn.addEventListener('click', () => {
       localStorage.removeItem(keyQuizAnswers(currentChapterId));
+      localStorage.removeItem(keyQuizSubmitted(currentChapterId));
       const ch = CHAPTERS.find(c => c.id === currentChapterId);
       if (ch) {
         renderQuiz(ch);
