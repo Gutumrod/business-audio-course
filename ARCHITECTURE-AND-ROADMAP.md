@@ -1,114 +1,105 @@
-# 📚 Business Audio Courseware: Architecture & Scalability Roadmap
-*เอกสารแผนงานสถาปัตยกรรมระบบคอร์สบทเรียนเสียงเพื่อการเรียนรู้ธุรกิจด้วยตนเอง*  
-*บันทึกเมื่อ: 2026-10-10 | อนุมัติโดย: คุณฟรี (CEO) | ดูแลโดย: Antigravity (AGY)*
+# 📚 WSTERA Academy × Business Audio Courseware: Architecture & Scalability Roadmap
+*เอกสารแผนงานสถาปัตยกรรมระบบคอร์สบทเรียนเสียงและระบบการเรียนรู้มาตรฐาน WSTERA Academy*  
+*ปรับปรุงล่าสุด (B1): 2026-10-10 | อนุมัติโดย: คุณฟรี (Owner) | สถาปัตยกรรมหลักสูตร: GPT (Academic Director) | พัฒนาระบบและเสียง: Antigravity (AGY)*
 
 ---
 
 ## 🎯 1. ภาพรวมและวิสัยทัศน์ของระบบ (Vision & Goals)
-สร้างเว็บแอปพลิเคชันคอร์สบทเรียนเสียง (Audio Courseware) ที่:
-1. **Zero AI-Slop & Editorial Clean:** ดีไซน์สไตล์นิตยสารธุรกิจเพื่อการเรียนรู้จริงจัง สะอาดตา อ่านสบาย ไม่ฉูดฉาด
-2. **Offline-First & Fast:** โหลดเร็ว ทำงานได้บนมือถือทุกรุ่น (iOS Safari / Android) ฟังต่อเนื่องได้แม้ออกนอกบ้าน
-3. **Data-Driven & Scalable:** หน้าจอเดียวสามารถสลับบทเรียนและข้อสอบได้อัตโนมัติ และรองรับการขยายเป็น "หอสมุดเสียงหลายเล่ม (Multi-Volume Academy)" ได้ไม่จำกัด
+สร้างเว็บแอปพลิเคชันระบบเรียนรู้ธุรกิจด้วยตนเอง (`MBAI-SELF-01`) ที่ผสานหนังสือเรียนเสียงเข้ากับมาตรฐานวิชาการของ WSTERA Academy:
+1. **Zero AI-Slop & Editorial Clean:** ดีไซน์สไตล์นิตยสารธุรกิจเพื่อการเรียนรู้จริงจัง สะอาดตา อ่านสบาย ใช้ภาษาไทยเข้าใจง่ายสำหรับผู้เรียนทั่วไป
+2. **Offline-First & Safe Local Persistence:** โหลดเร็ว ทำงานได้บนมือถือทุกรุ่น (iOS Safari / Android) มีระบบป้องกันข้อมูล `localStorage` เสียหายแบบไม่สูญเสียข้อมูลเดิม (Lossless Corrupt Storage Guard)
+3. **Separated Progress & Academic Integrity:** แยกความคืบหน้าการฟังเสียง แบบฝึกหัดท้ายบท และการประเมินผลผ่านเกณฑ์หลักสูตรออกจากกันอย่างชัดเจน ไม่มีการออกใบรับรองจำลองอัตโนมัติจากการฟังจบหรือทำควิซหน้าเว็บ
 
 ---
 
-## 📂 2. โครงสร้างระบบรองรับหลายเล่ม (Multi-Volume Directory Architecture)
+## 🧭 2. โครงสร้างรหัสหลักสูตรและเส้นทางนำทาง (Canonical ID & Hash Router)
 
-เมื่อขยายผลจากเล่ม 1 ไปสู่เล่มต่อๆ ไป ให้จัดวางโครงสร้างแบบแยกเล่มชัดเจน:
+### 2.1 รหัสมาตรฐานของหลักสูตร (Canonical Curriculum Taxonomy)
+- **`program_id`:** `MBAI-SELF-01`
+- **`volume_id` ปัจจุบัน:** `V00` — **Foundation Bridge: พื้นฐานธุรกิจและการบริหาร (10 บท)**
+  - *หมายเหตุสำคัญ:* `vol-01` ในเอกสารรุ่นแรกถูกกำหนดให้เป็นเพียง `legacy_agy_alias` สำหรับอ้างอิงย้อนหลังเท่านั้น เพื่อไม่ให้ชนกับ `V01: วิธีคิดเชิงธุรกิจ เศรษฐศาสตร์ และการตัดสินใจ` ของหลักสูตรหลัก WSTERA Academy
+- **`lesson_id`:** `V00-L01` ถึง `V00-L10` (แมปเข้ากับข้อมูลบทที่ `1` ถึง `10` ใน `data/chapters.js` และไฟล์เสียง `audio/ch01_full.mp3` ถึง `audio/ch10_full.mp3`)
+- **เวลาเรียนแยกตามประเภท:**
+  - เวลาไฟล์เสียงรวมจริงของ `V00`: `28:26 นาที` (`1,706 วินาที`)
+  - เวลาศึกษาด้วยตนเองรวมตามแผน (อ่านสรุป + ฟังเสียง + ทบทวน + แบบฝึกหัด): `8–12 ชั่วโมง`
+
+### 2.2 ระบบนำทางในหน้าเดียว (Single-Page Hash Router)
+ทำงานภายใน `index.html` หน้าเดียวโดยคง `<audio id="audioElement">` ตัวเดิมไว้ ไม่ทำให้เสียงสะดุดเวลาสลับมุมมอง:
+- `#home` — หน้าแรก Learning Hub (รองรับทั้งโหมดผู้เรียนใหม่และผู้เรียนเดิมที่กลับมาเรียนต่อ)
+- `#lesson/V00-L01` .. `#lesson/V00-L10` — หน้าเรียนรายบท (อ่านเนื้อหา + ไดอะแกรม + ฟังเสียง + แบบฝึกหัด 3 ข้อ)
+- `#progress` — หน้าภาพรวมความคืบหน้าทั้ง 10 บท พร้อมตัวกรองสถานะและปุ่มจัดการข้อมูลในอุปกรณ์
+- `#pretest/V00` — หน้าข้อมูลแบบประเมินก่อนเรียน (สถานะ B1: เตรียมเปิดใช้งาน พร้อมตัวเลือกตั้งค่าการนำทางสำหรับผู้ที่เคยทำจากช่องทางเดิม)
+- `#help` — หน้าวิธีใช้งาน คำศัพท์พื้นฐาน และความหมายของสถานะการบันทึก
+
+---
+
+## 📂 3. โครงสร้างไฟล์ระบบในปัจจุบัน (B1 File Architecture)
 
 ```text
 business-audio-course/
 │
-├── index.html                      # หน้า Hub รวมทุกเล่ม (Library Dashboard)
-├── ARCHITECTURE-AND-ROADMAP.md    # เอกสารสถาปัตยกรรมฉบับนี้
+├── index.html                      # แอปหลัก (Learning Hub + Hash Router + Audio Player + Lesson & Quiz View)
+├── ARCHITECTURE-AND-ROADMAP.md     # เอกสารสถาปัตยกรรมฉบับนี้
 │
-├── vol-01/                         # เล่ม 1: พื้นฐานธุรกิจ (Business Foundations)
-│   ├── index.html                  # Player ของเล่ม 1 (สลับบท 1-10 ในตัว)
-│   ├── audio/                      # ไฟล์เสียง MP3 ของบทที่ 1–10
-│   │   ├── ch01_full.mp3
-│   │   ├── ch02_full.mp3
-│   │   └── ...
-│   ├── data/
-│   │   └── chapters.js             # ฐานข้อมูลเนื้อหา สรุป อินโฟกราฟิก และ Quiz ทั้ง 10 บท
-│   └── images/                     # ภาพประกอบ/ไดอะแกรมประจำบท
+├── data/
+│   ├── chapters.js                 # ข้อมูลบทเรียน ไดอะแกรม และแบบฝึกหัดท้ายบททั้ง 10 บท (คงเดิม 100%)
+│   └── v00-manifest.js             # WSTERA V00 Canonical Manifest (V00-L01..V00-L10, เวลาเสียงจริง, คำศัพท์พื้นฐาน)
 │
-├── vol-02/                         # เล่ม 2: การตลาดและการขาย (Marketing & Sales)
-│   ├── index.html                  # Player ของเล่ม 2
-│   ├── audio/
-│   ├── data/
-│   └── images/
+├── js/
+│   └── storage-manager.js          # LearningStore: SafeStorage Guard, Lossless Corrupt Backup & Grounded Progress Summary
 │
-├── vol-03/                         # เล่ม 3: การเงินและกระแสเงินสด (Finance & Cashflow)
-│   └── ...
-│
-└── shared/                         # แอสเซทส่วนกลางที่ใช้ร่วมกันทุกเล่ม
-    ├── css/                        # Global Editorial Styles, Tokens
-    ├── js/                         # Audio Engine, LocalStorage Manager
-    └── icons/                      # SVG Icons
+└── audio/                          # ไฟล์เสียง MP3 มาตรฐาน Sadaltager บทที่ 1–10
+    ├── ch01_full.mp3 .. ch10_full.mp3
 ```
 
 ---
 
-## 🛠️ 3. กลไกการทำงานของระบบ (Core Mechanisms)
+## 🛡️ 4. มาตรฐานการจัดเก็บข้อมูลและการแยกสถานะความคืบหน้า (Storage & Progress Standard)
 
-### 3.1 Data-Driven Chapter Switching (สลับบทในหน้าเดียว)
-- **ไม่สร้างไฟล์ HTML ซ้ำซ้อน:** แต่ละเล่มจะมี `index.html` เพียงหน้าเดียว
-- ข้อมูลของแต่ละบทจะอยู่ใน `chapters.js` ในรูปแบบ Object เช่น:
-  ```javascript
-  const CHAPTERS = [
-    {
-      id: 1,
-      title: "ธุรกิจคืออะไร และผู้บริหารทำอะไร",
-      audio: "audio/ch01_full.mp3",
-      duration: "3:34",
-      objective: "อธิบายความต่างระหว่างรายได้ ต้นทุน กำไร และบทบาทผู้บริหาร",
-      sections: [...],
-      diagrams: [...],
-      quiz: [...]
-    },
-    ...
-  ];
-  ```
-- มี **Chapter Drawer / Dropdown Menu** ให้ผู้เรียนเลือกเปลี่ยนบทได้ทันที พร้อมปุ่ม "← บทก่อนหน้า" และ "บทถัดไป →"
+### 4.1 การรักษาความเข้ากันได้ของ `localStorage` (Backward-Compatible Keys)
+- รักษาคีย์เดิมของผู้เรียนไว้ครบถ้วน:
+  - `agy_v00_current_chapter`
+  - `agy_ch01_audio_time` .. `agy_ch10_audio_time`
+  - `agy_ch01_completed` .. `agy_ch10_completed`
+  - `agy_ch01_quiz_answers` .. `agy_ch10_quiz_answers`
+  - `agy_ch01_quiz_submitted` .. `agy_ch10_quiz_submitted`
+- คีย์เสริมสำหรับสถานะ B1:
+  - `wstera_v00_b1_meta` (`schema_version: 1`) — เก็บสถานะตัวเลือกช่วยนำทางหน้าแรก (`prior_pretest_self_declared`) และบทที่เข้าดูล่าสุด
+  - `agy_ch01_quiz_answers_corrupt_backup` .. `agy_ch10_quiz_answers_corrupt_backup` — สำรองข้อมูลดิบฉบับเต็มเมื่อผู้เรียนกดซ่อมแซมข้อมูลที่เสียหาย
 
-### 3.2 ระบบจำสถานะแยกเล่ม (LocalStorage Isolation)
-- แยก Namespace ชัดเจนตามเล่ม เพื่อไม่ให้ข้อมูลทับซ้อนกัน:
-  - `agy_v01_current_chapter`: บทล่าสุดที่กำลังเรียน
-  - `agy_v01_ch01_time`: เวลาเสียงที่ฟังค้างไว้ของบทที่ 1
-  - `agy_v01_ch01_completed`: สถานะฟังจบของบทที่ 1
-  - `agy_v01_ch01_quiz_answers`: คำตอบควิซของบทที่ 1
-  - `agy_v01_ch01_score`: คะแนนสอบของบทที่ 1
+### 4.2 ระบบป้องกันข้อมูลเสียแบบไม่ทำลายข้อมูลเดิม (Lossless Corrupt Storage Guard)
+- ทุกการอ่าน JSON ใช้ `try/catch` ร่วมกับการตรวจชนิดข้อมูล (`plain object` เท่านั้น ปฏิเสธ `null`, `array`, `primitive`, และคีย์อันตราย `__proto__`, `constructor`, `prototype`)
+- ตรวจสอบรหัสข้อสอบ (`allowedQuestionIds`) และตัวเลือก (`A`, `B`, `C`, `D`) ก่อนนำไปคำนวณหรือแสดงผล
+- หากพบค่าใน `agy_chXX_quiz_answers` เสียหาย:
+  1. หน้าเว็บและชิปเลือกบททั้ง 10 บทยังคงทำงานได้ตามปกติโดยไม่ล่ม
+  2. ระบบ**ไม่ลบและไม่ตัดทอน**ค่าที่เสียหายทิ้งเองระหว่างการอ่าน
+  3. เมื่อผู้เรียนกดซ่อมแซม ระบบจะสำรองค่าดิบฉบับเต็มไว้ที่ `agy_chXX_quiz_answers_corrupt_backup` และตรวจสอบว่าบันทึกสำเร็จก่อนรีเซ็ตเฉพาะบทที่มีปัญหา
 
-### 3.3 มาตรฐานการผลิตเสียง (TTS Production Standard)
-- **Engine:** Gemini 3.1 Flash TTS Preview
-- **Voice:** `Sadaltager` (Knowledgeable Business Mentor)
-- **Director Prompt:** `"Style: Knowledgeable Business Mentor, calm, warm, authoritative, clear Thai articulation, steady and thoughtful pacing."`
-- **Multi-Part Concat Rule:** เพื่อป้องกัน API Cutoff (~70s limit) ให้แบ่งสคริปต์เป็นท่อนละ 70-100 คำ (~40-50 วินาที) แล้วนำมาต่อด้วย `ffmpeg -f concat` เป็นไฟล์เดียว
+### 4.3 การแยกสถานะความคืบหน้า (Separated Progress Model)
+ระบบแสดงผลแยก 4 มิติอย่างชัดเจนและคำนวณจากข้อมูลจริงใน `manifest.lessons.length`:
+1. **`audio_completed_count` (`X/10 บท`):** จำนวนบทที่ฟังเสียงจบแล้ว
+2. **`practice_submitted_count` (`Y/10 บท`):** จำนวนบทที่กดส่งตรวจแบบฝึกหัดท้ายบทแล้ว (คำนวณจากสถานะการส่งจริง ไม่ใช่ดูว่าคะแนนมากกว่า 0)
+3. **`practice_score` (`Z/30 คะแนน`):** คะแนนรวมจากแบบฝึกหัดทบทวนท้ายบท
+4. **`academy_gate_status` (`ยังไม่ได้ประเมิน`):** สถานะการผ่านเกณฑ์หลักสูตร WSTERA Academy ซึ่งต้องรอผลจากระบบประเมินหลักและงานเขียนวิเคราะห์ (ไม่ขึ้นว่า "ผ่านหลักสูตร" หรือออกใบรับรองจำลองจากการฟังเสียงครบหรือได้คะแนนแบบฝึกหัด 30/30)
 
 ---
 
-## 🗺️ 4. แผนงานการพัฒนา (Action Roadmap)
+## 🗺️ 5. แผนงานการพัฒนา (Phased Implementation Roadmap)
 
-### เฟส 1 (ปัจจุบัน): Pilot บทที่ 1 (เสร็จสมบูรณ์)
-- [x] สคริปต์คำอ่านไทยธรรมชาติของบทที่ 1
-- [x] เจนเสียง Sadaltager ตัวเต็ม 3:34 นาที (MP3)
-- [x] Web Player สไตล์ Editorial สะอาดตา ไร้ AI-Slop
-- [x] Interactive Quiz 3 ข้อ พร้อมเฉลยละเอียด
-- [x] Deploy ขึ้น GitHub Pages ออนไลน์ 24 ชม. ([https://gutumrod.github.io/business-audio-course/](https://gutumrod.github.io/business-audio-course/))
-- [x] แก้ไขบั๊ก Mobile Audio Playback บน iOS / Android
+### เฟสพื้นฐานเสียง V00 (เสร็จสมบูรณ์)
+- [x] สคริปต์และเสียงพากย์ `Sadaltager` ครบทั้ง 10 บทของ `V00` (`28:26 นาที`)
+- [x] เนื้อหาสรุป ไดอะแกรม SVG และแบบฝึกหัดท้ายบท 30 ข้อ (ส่งตรวจก่อนแสดงเฉลย)
 
-### เฟส 2: ยกระดับสู่ Data-Driven Player & ผลิตบทที่ 2
-- [ ] แปลงโครงสร้าง `index.html` ให้รองรับ Data-Driven `chapters.js`
-- [ ] เพิ่มเมนู **Chapter Navigation Drawer** เลือกบทที่ 1 และ 2
-- [ ] เพิ่ม **ภาพประกอบ Infographic / Diagram** ประจำบทที่ 1 และ 2
-- [ ] เรียบเรียงสคริปต์และเจนเสียง Sadaltager บทที่ 2 ("ลูกค้า ปัญหา และคุณค่าที่ขาย")
-- [ ] เพิ่ม Interactive Quiz ของบทที่ 2
-- [ ] ทดสอบและ Deploy ขึ้น GitHub Pages
+### เฟส B0: สำรวจและออกแบบสถาปัตยกรรมร่วม (เสร็จสมบูรณ์)
+- [x] ตรวจสอบความเข้ากันได้ของระบบเดิมกับแผนแม่บท WSTERA Academy (`B0-FEASIBILITY-AND-INTEGRATION-REPORT.md`)
 
-### เฟส 3: ขยายผลให้ครบเล่ม 1 (บทที่ 3–10)
-- ผลิตบทที่ 3 ถึง 10 ให้ครบถ้วนตามลำดับ
-- สรุปผลคะแนนรวม 30 ข้อ และสร้างใบ Certificate จำลองผ่านหน้าเว็บ
+### เฟส B1 (ปัจจุบัน): Learning Hub, Canonical V00 Manifest & Storage Guard
+- [x] เพิ่ม `data/v00-manifest.js` ผูกรหัส `V00` และ `V00-L01`..`V00-L10` โดยไม่กระทบ `data/chapters.js`
+- [x] เพิ่ม `js/storage-manager.js` ป้องกัน `localStorage` เสียหายแบบรักษาข้อมูลเดิมครบถ้วน
+- [x] เพิ่มหน้าแรก Learning Hub (`#home`), หน้าภาพรวมความคืบหน้า (`#progress`), หน้าเตรียมเปิดใช้งานแบบประเมินก่อนเรียน (`#pretest/V00`), และหน้าคำแนะนำ (`#help`)
+- [x] แยกสถานะฟังจบ ส่งแบบฝึกหัด คะแนนทบทวน และสถานะประเมินหลักสูตรออกจากกัน
 
-### เฟส 4: Multi-Volume Academy Portal
-- สร้างหน้า Dashboard Hub รวมเล่ม 1, เล่ม 2, เล่ม 3
-- เตรียมพร้อมสำหรับการศึกษาต่อยอดและขยายผลในอนาคต
+### เฟสต่อไป (B2+ หลังผ่านการตรวจรับ B1)
+- [ ] ระบบแบบประเมินก่อนเรียน (Pre-Test Engine) และเกณฑ์ประเมินตามมาตรฐาน WSTERA Academy
+- [ ] ระบบบัญชีผู้เรียนและฐานข้อมูล Cloud/Supabase พร้อมการซิงก์ข้อมูลจาก `localStorage` แบบไม่ทับข้อมูลเดิม
+- [ ] ขยายสู่เล่มหลักสูตรหลัก `V01`–`V12` ของ WSTERA Academy
