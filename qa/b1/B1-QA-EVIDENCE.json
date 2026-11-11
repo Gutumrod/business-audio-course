@@ -1,0 +1,334 @@
+{
+  "timestamp": "2026-10-10T20:12:02+0700",
+  "base_url": "http://127.0.0.1:8765",
+  "static_checks": {
+    "js_syntax_check": {
+      "passed": true,
+      "files": {
+        "data/chapters.js": {
+          "ok": true,
+          "stderr": ""
+        },
+        "data/v00-manifest.js": {
+          "ok": true,
+          "stderr": ""
+        },
+        "js/storage-manager.js": {
+          "ok": true,
+          "stderr": ""
+        }
+      }
+    },
+    "untouched_protected_paths": {
+      "passed": true,
+      "diff_bytes": 0
+    },
+    "no_private_data_or_forbidden_tokens": {
+      "passed": true,
+      "leaked_tokens": []
+    }
+  },
+  "routes_and_ux": {
+    "passed": true,
+    "first_visit_badge": "สถานะก่อนเรียน: ยังไม่มีผลประเมินก่อนเรียนในเว็บนี้",
+    "pretest_cta_text": "ทำแบบประเมินก่อนเรียน — เตรียมเปิดใช้งาน",
+    "start_cta_text": "ดูบทเรียนตัวอย่าง / เริ่มเรียนบทที่ 1 (V00-L01) →",
+    "storage_badge_text": "บันทึกในอุปกรณ์นี้ · ยังไม่ซิงก์ข้ามเครื่อง",
+    "pretest_heading": "แบบประเมินก่อนเรียน (24 ข้อ) — เตรียมเปิดใช้งาน",
+    "self_declared_meta": {
+      "schema_version": 1,
+      "baseline_nav_mode": "prior_pretest_self_declared",
+      "updated_at": "2026-10-10T13:12:34.745Z"
+    },
+    "baseline_after_self_declare": "แจ้งว่ามีผลจากช่องทางเดิมแล้ว (ยังไม่ได้เชื่อมผลประเมินเดิม)",
+    "l10_title": "บทที่ 10: การตัดสินใจและแผน 30 วัน",
+    "progress_rows": 10,
+    "back_hash": "#progress",
+    "forward_hash": "#help",
+    "unknown_fallback_notice": true,
+    "invalid_lesson_notice": true,
+    "page_errors": []
+  },
+  "corrupt_storage_matrix": [
+    {
+      "case": "invalid_json",
+      "ch_chip_count": 10,
+      "banner_visible": true,
+      "raw_preserved_on_read": true,
+      "ch02_progress_intact": true,
+      "no_raw_console_leak": true,
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "case": "null_value",
+      "ch_chip_count": 10,
+      "banner_visible": true,
+      "raw_preserved_on_read": true,
+      "ch02_progress_intact": true,
+      "no_raw_console_leak": true,
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "case": "array_value",
+      "ch_chip_count": 10,
+      "banner_visible": true,
+      "raw_preserved_on_read": true,
+      "ch02_progress_intact": true,
+      "no_raw_console_leak": true,
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "case": "primitive_number",
+      "ch_chip_count": 10,
+      "banner_visible": true,
+      "raw_preserved_on_read": true,
+      "ch02_progress_intact": true,
+      "no_raw_console_leak": true,
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "case": "primitive_string",
+      "ch_chip_count": 10,
+      "banner_visible": true,
+      "raw_preserved_on_read": true,
+      "ch02_progress_intact": true,
+      "no_raw_console_leak": true,
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "case": "proto_pollution",
+      "ch_chip_count": 10,
+      "banner_visible": true,
+      "raw_preserved_on_read": true,
+      "ch02_progress_intact": true,
+      "no_raw_console_leak": true,
+      "page_errors": [],
+      "passed": true
+    },
+    {
+      "case": "invalid_question_or_option",
+      "ch_chip_count": 10,
+      "banner_visible": true,
+      "raw_preserved_on_read": true,
+      "ch02_progress_intact": true,
+      "no_raw_console_leak": true,
+      "page_errors": [],
+      "passed": true
+    }
+  ],
+  "lossless_recovery_check": {
+    "passed": true,
+    "original_length": 377,
+    "backup_length": 377,
+    "exact_match": true,
+    "ch01_cleared_after_verified_backup": true,
+    "ch02_untouched": true,
+    "page_errors": []
+  },
+  "quota_blocked_safety_check": {
+    "passed": true,
+    "details": {
+      "recoveryAttempt": {
+        "recovered": false,
+        "backupVerified": false,
+        "reason": "storage_write_blocked"
+      },
+      "writeAttempt": {
+        "persistedToLocalStorage": false,
+        "usedMemoryFallback": true
+      },
+      "rawPreservedWhenBackupBlocked": true
+    },
+    "page_errors": []
+  },
+  "audio_retention_check": {
+    "passed": true,
+    "same_dom_instance": true,
+    "src_before": "audio/ch01_full.mp3",
+    "src_after": "audio/ch01_full.mp3",
+    "speed_after_click": "1.25x",
+    "page_errors": []
+  },
+  "separated_progress_check": {
+    "passed": true,
+    "zero_score_submitted_count": "1 / 10",
+    "zero_score_total": "0 / 30",
+    "perfect_audio": "10 / 10",
+    "perfect_submitted": "10 / 10",
+    "perfect_score": "30 / 30",
+    "perfect_gate_status": "ยังไม่ได้ประเมิน",
+    "page_errors": []
+  },
+  "responsive_viewports": [
+    {
+      "viewport": "375x812",
+      "passed": true,
+      "routes": {
+        "#home": {
+          "innerWidth": 375,
+          "scrollWidth": 375,
+          "no_horizontal_overflow": true
+        },
+        "#lesson/V00-L01": {
+          "innerWidth": 375,
+          "scrollWidth": 375,
+          "no_horizontal_overflow": true
+        },
+        "#progress": {
+          "innerWidth": 375,
+          "scrollWidth": 375,
+          "no_horizontal_overflow": true
+        },
+        "#pretest/V00": {
+          "innerWidth": 375,
+          "scrollWidth": 375,
+          "no_horizontal_overflow": true
+        },
+        "#help": {
+          "innerWidth": 375,
+          "scrollWidth": 375,
+          "no_horizontal_overflow": true
+        }
+      },
+      "page_errors": []
+    },
+    {
+      "viewport": "390x844",
+      "passed": true,
+      "routes": {
+        "#home": {
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "no_horizontal_overflow": true
+        },
+        "#lesson/V00-L01": {
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "no_horizontal_overflow": true
+        },
+        "#progress": {
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "no_horizontal_overflow": true
+        },
+        "#pretest/V00": {
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "no_horizontal_overflow": true
+        },
+        "#help": {
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "no_horizontal_overflow": true
+        }
+      },
+      "page_errors": []
+    },
+    {
+      "viewport": "430x932",
+      "passed": true,
+      "routes": {
+        "#home": {
+          "innerWidth": 430,
+          "scrollWidth": 430,
+          "no_horizontal_overflow": true
+        },
+        "#lesson/V00-L01": {
+          "innerWidth": 430,
+          "scrollWidth": 430,
+          "no_horizontal_overflow": true
+        },
+        "#progress": {
+          "innerWidth": 430,
+          "scrollWidth": 430,
+          "no_horizontal_overflow": true
+        },
+        "#pretest/V00": {
+          "innerWidth": 430,
+          "scrollWidth": 430,
+          "no_horizontal_overflow": true
+        },
+        "#help": {
+          "innerWidth": 430,
+          "scrollWidth": 430,
+          "no_horizontal_overflow": true
+        }
+      },
+      "page_errors": []
+    },
+    {
+      "viewport": "768x1024",
+      "passed": true,
+      "routes": {
+        "#home": {
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "no_horizontal_overflow": true
+        },
+        "#lesson/V00-L01": {
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "no_horizontal_overflow": true
+        },
+        "#progress": {
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "no_horizontal_overflow": true
+        },
+        "#pretest/V00": {
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "no_horizontal_overflow": true
+        },
+        "#help": {
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "no_horizontal_overflow": true
+        }
+      },
+      "page_errors": []
+    },
+    {
+      "viewport": "1280x900",
+      "passed": true,
+      "routes": {
+        "#home": {
+          "innerWidth": 1280,
+          "scrollWidth": 1280,
+          "no_horizontal_overflow": true
+        },
+        "#lesson/V00-L01": {
+          "innerWidth": 1280,
+          "scrollWidth": 1280,
+          "no_horizontal_overflow": true
+        },
+        "#progress": {
+          "innerWidth": 1280,
+          "scrollWidth": 1280,
+          "no_horizontal_overflow": true
+        },
+        "#pretest/V00": {
+          "innerWidth": 1280,
+          "scrollWidth": 1280,
+          "no_horizontal_overflow": true
+        },
+        "#help": {
+          "innerWidth": 1280,
+          "scrollWidth": 1280,
+          "no_horizontal_overflow": true
+        }
+      },
+      "page_errors": []
+    }
+  ],
+  "b0_backward_compat_smoke": {
+    "passed": true,
+    "saved_ans": "{\"1\":\"A\"}",
+    "page_errors": []
+  }
+}
